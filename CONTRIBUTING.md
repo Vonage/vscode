@@ -1,19 +1,20 @@
 # Contributing Guidelines
 
-For anyone looking to get involved to this project, we are glad to hear from you. Here are a few types of contributions
-that we would be interested in hearing about.
+Want to contribute to this project? We ❤️ it! 
+
+Here are a few types of contributions that we would be interested in hearing about.
 
 *  Bug fixes
     -  If you find a bug, please first report it using Github Issues.
-    -  Issues that have already been identified as a bug will be labelled `bug`.
+    -  Issues that have already been identified as a bug will be labeled `🐛 bug`.
     -  If you'd like to submit a fix for a bug, send a Pull Request from your own fork and mention the Issue number.
         +  Include a test that isolates the bug and verifies that it was fixed.
 *  New Features
-    -  If you'd like to accomplish something in the library that it doesn't already do, describe the problem in a new
+    -  If you'd like to accomplish something in the extension that it doesn't already do, describe the problem in a new
        Github Issue.
-    -  Issues that have been identified as a feature request will be labelled `enhancement`.
+    -  Issues that have been identified as a feature request will be labeled `✨ enhancement`.
     -  If you'd like to implement the new feature, please wait for feedback from the project maintainers before spending
-       too much time writing the code. In some cases, `enhancement`s may not align well with the project objectives at
+       too much time writing the code. In some cases, `✨ enhancement`s may not align well with the project objectives at
        the time.
 *  Tests, Documentation, Miscellaneous
     -  If you think the test coverage could be improved, the documentation could be clearer, you've got an alternative
@@ -21,6 +22,8 @@ that we would be interested in hearing about.
        it.
        -  If its a trivial change, go ahead and send a Pull Request with the changes you have in mind
        -  If not, open a Github Issue to discuss the idea first.
+
+We also welcome anyone to work on any existing issues with the `👋🏽 good first issue` tag.
 
 ## Requirements
 
@@ -33,11 +36,23 @@ For a contribution to be accepted:
 If the contribution doesn't meet these criteria, a maintainer will discuss it with you on the Issue. You can still
 continue to add more commits to the branch you have sent the Pull Request from.
 
+## Branching / Processes
+
+We maintain two primary branches:
+
+- `main`: Code that correlates to the latest released version of the extension
+- `dev`: Code that is pending release to the Visual Studio Code marketplace
+
+When submitting pull requests, be sure to create your development branch and submit pull requests targeting the
+`dev` branch. Merged pull requests will live here until the maintainers merge them to the `main` branch
+for an official release.
+
 ## How To
 
 1. Fork this repository on GitHub.
 1. Clone/fetch your fork to your local development machine.
+1. Check out and pull the `dev` branch. 
 1. Create a new branch (e.g. `issue-12`, `feat.add_foo`, etc) and check it out.
 1. Make your changes and commit them. (Did the tests pass?)
 1. Push your new branch to your fork. (e.g. `git push myname issue-12`)
-1. Open a Pull Request from your new branch to the original fork's `master` branch.
+1. Open a Pull Request from your new branch to the original fork's `dev` branch.
