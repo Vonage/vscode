@@ -2,7 +2,7 @@ name: CD
 
 on:
   push:
-    branches: [ main-test ]
+    branches: [ main ]
 jobs:
   build:
     if: github.event.head_commit.committer.name != 'Versioning Action'
