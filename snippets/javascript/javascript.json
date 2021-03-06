@@ -1,0 +1,93 @@
+{
+  "Create Vonage": {
+    "prefix": [
+      "Vonage"
+    ],
+    "body": [
+      "const vonage = new Vonage({",
+      "  apiKey: '${1:API_KEY}',",
+      "  apiSecret: '${2:API_SECRET}',",
+      "  applicationId: '${3:APP_ID}',",
+      "  privateKey: '${4:PRIVATE_KEY_PATH}',",
+      "  signatureSecret: '${5:SIGNATURE_SECRET}',",
+      "  signatureMethod: '${6:SIGNATURE_METHOD}'",
+      "}, ${7:options});"
+    ],
+    "description": "Create Vonage object"
+  },
+  "Create Vonage Application": {
+    "prefix": [
+      "VonAppCreate"
+    ],
+    "body": [
+      "vonage.applications.create({",
+      "  name: '${1:APPLICATION_NAME}',",
+      "  capabilities: {",
+      "    voice: {",
+      "       webhooks: {",
+      "         answer_url: {",
+      "           address: '${2:https://example.com/webhooks/answer}',",
+      "           http_method: '${3:GET}',",
+      "         },",
+      "         event_url: {",
+      "           address: '${4:https://example.com/webhooks/event}',",
+      "           http_method: '${5:GET}',",
+      "         }",
+      "       }",
+      "     },",
+      "    messages: {",
+      "      webhooks: {",
+      "        inbound_url: {",
+      "          address: '${6:https://example.com/webhooks/inbound}',",
+      "          http_method: '${7:POST}',",
+      "        },",
+      "        status_url: {",
+      "          address: '${8:https://example.com/webhooks/status}',",
+      "          http_method: '${9:POST}',",
+      "        }",
+      "      }",
+      "    },",
+      "    rtc: {",
+      "      webhooks: {",
+      "        event_url: {",
+      "          address: '${10:https://example.com/webhooks/rtcevent}',",
+      "          http_method: '${11:POST}',",
+      "        }",
+      "      }",
+      "    }",
+      "  }",
+      "}, (error, result) => {",
+      "  if(error) {",
+      "    console.error(error);",
+      "  }",
+      "  else {",
+      "    console.log(result);",
+      "  }",
+      "});"
+    ],
+    "description": "Create Vonage application"
+  },
+  "Send SMS": {
+    "prefix": [
+      "VonSendSMS"
+    ],
+    "body": [
+      "const from = '${1:VONAGE_BRAND_NAME}';",
+      "const to = '${2:TO_NUMBER}';",
+      "const text = '${3:MESSAGE_TO_SEND}';",
+      "",
+      "vonage.message.sendSms(from, to, text, (err, responseData) => {",
+      "  if (err) {",
+      "    console.log(err);",
+      "  } else {",
+      "    if(responseData.messages['0']['status'] === '0') {",
+      "      console.log('Message sent successfully.');",
+      "    } else {",
+      "      console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);",
+      "    }",
+      "  }",
+      "});"
+    ],
+    "description": "Send an SMS message"
+  }
+}

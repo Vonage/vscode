@@ -1,0 +1,30 @@
+{
+  "Create Vonage": {
+    "prefix": [
+      "Vonage"
+    ],
+    "body": [
+      "var credentials = Credentials.FromApiKeyAndSecret(",
+      "  \"${1:VONAGE_API_KEY}\",",
+      "  \"${2:VONAGE_API_SECRET}\"",
+      ");",
+      "",
+      "var vonageClient = new VonageClient(credentials);"
+    ],
+    "description": "Create Vonage object"
+  },
+  "Send SMS": {
+    "prefix": [
+      "VonSendSMS"
+    ],
+    "body": [
+      "var response = VonageClient.SmsClient.SendAnSms(new Vonage.Messaging.SendSmsRequest()",
+      "{",
+      "    To = \"${1:TO_NUMBER}\",",
+      "    From = \"${2:VONAGE_BRAND_NAME}\",",
+      "    Text = \"${3:MESSAGE_TO_SEND}\"",
+      "});"
+    ],
+    "description": "Send an SMS message"
+  }
+}

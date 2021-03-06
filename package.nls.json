@@ -1,0 +1,12 @@
+{
+  "vonage-vscode.applications": "Applications",
+  "vonage-vscode.numbers": "Numbers",
+  "vonage-vscode.help": "Help and feedback",
+  "vonage-vscode.login": "Sign in",
+  "vonage-vscode.logout": "Sign out",
+  "vonage-vscode.help.reportIssue": "Report issue",
+  "vonage-vscode.help.openDocs": "Read documentation",
+  "vonage-vscode.help.openSurvey": "Rate and provide feedback",
+  "vonage-vscode.help.openTelemetryInfo": "Telemetry info",
+  "vonage-vscode.welcome": "Welcome to the Vonage VS Code extension.\n\nPlease authenticate by providing your Vonage API key & secret.\n[Provide API key & secret](command:vonage.login)"
+}

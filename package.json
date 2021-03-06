@@ -1,0 +1,443 @@
+{
+  "name": "@vonage/vscode",
+  "version": "0.0.1",
+  "description": "A Visual Studio Code extension for accessing the Vonage communication APIs.",
+  "main": "./dist/extension",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vscode"
+  },
+  "keywords": [
+    "vonage",
+    "vscode",
+    "extension",
+    "sms",
+    "voice"
+  ],
+  "author": {
+    "name": "Michael Jolley",
+    "email": "michael.jolley@vonage.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vonage/vscode/issues"
+  },
+  "publisher": "vonage",
+  "icon": "resources/logo.png",
+  "preview": true,
+  "engines": {
+    "vscode": "^1.32.0"
+  },
+  "galleryBanner": {
+    "color": "#373436",
+    "theme": "dark"
+  },
+  "extensionKind": [
+    "workspace"
+  ],
+  "homepage": "https://developer.nexmo.com",
+  "categories": [
+    "Other",
+    "Snippets"
+  ],
+  "activationEvents": [
+    "onView:vonageApplicationView",
+    "onView:vonageNumbersView",
+    "onView:vonageHelpView",
+    "onCommand:vonage.app.refreshAppsList",
+    "onCommand:vonage.app.addApp",
+    "onCommand:vonage.app.updateApp",
+    "onCommand:vonage.app.deleteApp",
+    "onCommand:vonage.app.link",
+    "onCommand:vonage.app.voice.add",
+    "onCommand:vonage.app.voice.update",
+    "onCommand:vonage.app.voice.delete",
+    "onCommand:vonage.app.messages.add",
+    "onCommand:vonage.app.messages.update",
+    "onCommand:vonage.app.messages.delete",
+    "onCommand:vonage.app.rtc.add",
+    "onCommand:vonage.app.rtc.update",
+    "onCommand:vonage.app.rtc.delete",
+    "onCommand:vonage.app.vbc.add",
+    "onCommand:vonage.app.vbc.delete",
+    "onCommand:vonage.numbers.refreshNumbersList",
+    "onCommand:vonage.numbers.filterNumbers",
+    "onCommand:vonage.numbers.buyNumber",
+    "onCommand:vonage:login",
+    "onCommand:vonage:logout",
+    "onCommand:vonage.help.openDocs",
+    "onCommand:vonage.help.openReportIssue",
+    "onCommand:vonage.help.openSurvey",
+    "onCommand:vonage.help.openTelemetryInfo"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "Vonage",
+      "properties": {
+        "vonage.telemetry.enabled": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Specifies whether to enable Vonage telemetry (even if enabled still abides by the overall `#telemetry.enableTelemetry#` setting)",
+          "scope": "window"
+        }
+      }
+    },
+    "commands": [
+      {
+        "category": "Vonage",
+        "command": "vonage.login",
+        "title": "Sign in",
+        "icon": "$(lock)"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.logout",
+        "title": "Sign out",
+        "icon": "$(lock)",
+        "enablement": "vonage:authenticated"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.help.openDocs",
+        "title": "Open extension documentation",
+        "icon": "$(book)",
+        "enablement": "vonage:authenticated && view == vonageHelpView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.help.openReportIssue",
+        "title": "Report issue",
+        "icon": "$(report)",
+        "enablement": "vonage:authenticated && view == vonageHelpView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.help.openSurvey",
+        "title": "Rate and provide feedback",
+        "icon": "$(feedback)",
+        "enablement": "vonage:authenticated && view == vonageHelpView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.help.openTelemetryInfo",
+        "title": "Telemetry info",
+        "enablement": "vonage:authenticated && view == vonageHelpView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.refreshAppsList",
+        "title": "Refresh applications list",
+        "icon": "$(refresh)",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.addApp",
+        "title": "Create application",
+        "icon": "$(plus)",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.updateApp",
+        "title": "Rename",
+        "icon": "$(save)",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.deleteApp",
+        "title": "Delete application",
+        "icon": "$(trash)",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.link",
+        "title": "View in dashboard",
+        "icon": "$(globe)",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.voice.add",
+        "title": "Enable voice",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.voice.update",
+        "title": "Modify voice",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.voice.delete",
+        "title": "Disable voice",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.messages.add",
+        "title": "Enable messages",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.messages.update",
+        "title": "Modify messages",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.messages.delete",
+        "title": "Disable messages",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.rtc.add",
+        "title": "Enable RTC",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.rtc.update",
+        "title": "Modify RTC",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.rtc.delete",
+        "title": "Disable RTC",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.vbc.add",
+        "title": "Enable VBC",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.app.vbc.delete",
+        "title": "Disable VBC",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.numbers.refreshNumbersList",
+        "title": "Refresh numbers",
+        "icon": "$(refresh)",
+        "enablement": "vonage:authenticated && view == vonageNumbersView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.numbers.buyNumber",
+        "title": "Buy number",
+        "icon": "$(plus)",
+        "enablement": "vonage:authenticated && view == vonageNumbersView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.numbers.filterNumbers",
+        "title": "Filter numbers",
+        "icon": "$(filter)",
+        "enablement": "vonage:authenticated && view == vonageNumbersView"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "vonage.app.addApp",
+          "when": "vonage:authenticated && view == vonageAppView",
+          "group": "navigation"
+        },
+        {
+          "command": "vonage.app.refreshAppsList",
+          "when": "vonage:authenticated && view == vonageAppView",
+          "group": "navigation"
+        },
+        {
+          "command": "vonage.numbers.buyNumber",
+          "when": "vonage:authenticated && view == vonageNumbersView",
+          "group": "navigation"
+        },
+        {
+          "command": "vonage.numbers.filterNumbers",
+          "when": "vonage:authenticated && view == vonageNumbersView",
+          "group": "navigation"
+        },
+        {
+          "command": "vonage.numbers.refreshNumbersList",
+          "when": "vonage:authenticated && view == vonageNumbersView",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "vonage.app.deleteApp",
+          "when": "viewItem =~ /^application[a-z-]*/i",
+          "group": "inline@2"
+        },
+        {
+          "command": "vonage.app.link",
+          "when": "viewItem =~ /^application[a-z-]*/i",
+          "group": "inline@1"
+        },
+        {
+          "command": "vonage.app.voice.update",
+          "when": "viewItem =~ /^application[a-z-]*(?:-voice)[a-z-]*/g",
+          "group": "applications_2@1"
+        },
+        {
+          "command": "vonage.app.voice.delete",
+          "when": "viewItem =~ /^application[a-z-]*(?:-voice)[a-z-]*/g",
+          "group": "applications_2@2"
+        },
+        {
+          "command": "vonage.app.messages.update",
+          "when": "viewItem =~ /^application[a-z-]*(?:-messages)[a-z-]*/g",
+          "group": "applications_3@1"
+        },
+        {
+          "command": "vonage.app.messages.delete",
+          "when": "viewItem =~ /^application[a-z-]*(?:-messages)[a-z-]*/g",
+          "group": "applications_3@2"
+        },
+        {
+          "command": "vonage.app.rtc.update",
+          "when": "viewItem =~ /^application[a-z-]*(?:-rtc)[a-z-]*/g",
+          "group": "applications_4@1"
+        },
+        {
+          "command": "vonage.app.rtc.delete",
+          "when": "viewItem =~ /^application[a-z-]*(?:-rtc)[a-z-]*/g",
+          "group": "applications_4@2"
+        },
+        {
+          "command": "vonage.app.vbc.delete",
+          "when": "viewItem =~ /^application[a-z-]*(?:-vbc)[a-z-]*/g",
+          "group": "applications_5@1"
+        },
+        {
+          "command": "vonage.app.voice.add",
+          "when": "viewItem =~ /(?!.*-voice)^application[a-z-]*/g",
+          "group": "applications_8@1"
+        },
+        {
+          "command": "vonage.app.messages.add",
+          "when": "viewItem =~ /(?!.*-messages)^application[a-z-]*/g",
+          "group": "applications_8@2"
+        },
+        {
+          "command": "vonage.app.rtc.add",
+          "when": "viewItem =~ /(?!.*-rtc)^application[a-z-]*/g",
+          "group": "applications_8@3"
+        },
+        {
+          "command": "vonage.app.vbc.add",
+          "when": "viewItem =~ /(?!.*-vbc)^application[a-z-]*/g",
+          "group": "applications_8@4"
+        },
+        {
+          "command": "vonage.app.updateApp",
+          "when": "viewItem =~ /^application[a-z-]*/i",
+          "group": "applications_9@1"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "vonageAppView",
+        "contents": "%vonage-vscode.welcome%",
+        "when": "!vonage:authenticated"
+      }
+    ],
+    "views": {
+      "vonage": [
+        {
+          "id": "vonageAppView",
+          "name": "%vonage-vscode.applications%"
+        },
+        {
+          "id": "vonageNumbersView",
+          "name": "%vonage-vscode.numbers%",
+          "visibility": "collapsed",
+          "when": "vonage:authenticated"
+        },
+        {
+          "id": "vonageHelpView",
+          "name": "%vonage-vscode.help%"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "icon": "./resources/icon_activitybar.svg",
+          "id": "vonage",
+          "title": "Vonage"
+        }
+      ]
+    },
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/javascript/javascript.json"
+      },
+      {
+        "language": "csharp",
+        "path": "./snippets/csharp/csharp.json"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "npx vsce package -o release.vsix",
+    "publish": "npx vsce publish",
+    "vscode:prepublish": "webpack --mode production",
+    "webpack": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "postinstall": "node node_modules/vscode/bin/install",
+    "just-test": "node node_modules/vscode/bin/test",
+    "compile": "tsc -p ./ && webpack",
+    "test": "npm run compile && node node_modules/vscode/bin/test"
+  },
+  "dependencies": {
+    "@vonage/server-sdk": "^2.10.7",
+    "handlebars": "^4.7.7",
+    "keytar": "^7.4.0",
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.1",
+    "os-name": "^4.0.0",
+    "public-ip": "^4.0.3",
+    "universal-analytics": "^0.4.23",
+    "uuid": "^8.3.2",
+    "vscode-nls": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^14.14.22",
+    "@types/node-fetch": "^2.5.8",
+    "@types/sinon": "^9.0.10",
+    "@types/universal-analytics": "^0.4.4",
+    "@types/uuid": "^8.3.0",
+    "@types/vscode": "^1.53.0",
+    "chai": "^4.2.0",
+    "copy-webpack-plugin": "^7.0.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "mocha-junit-reporter": "^2.0.0",
+    "node-loader": "^1.0.2",
+    "sinon": "^9.2.4",
+    "spec-xunit-file": "0.0.1-3",
+    "ts-loader": "^8.0.14",
+    "typescript": "^4.1.3",
+    "vscode-codicons": "0.0.14",
+    "vscode-nls-dev": "^3.3.2",
+    "vscode-test": "^1.5.1",
+    "webpack": "^5.19.0",
+    "webpack-cli": "^4.4.0"
+  }
+}
