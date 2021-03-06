@@ -6,3 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+---
+
+## [0.0.6] - 2021-03-06
+
+### Added
+
+- Application management
+  - Create, rename, and delete applications
+  - Add, edit, or remove capabilities (voice, messages, rtc, vbc)
+- Numbers
+  - See listing of numbers owned
+- Documentation
+  - Quick access to Vonage API dashboard
+  - Initial README, CONTRIBUTING, etc.
+
+[unreleased]: https://github.com/builders-club/vscode-twitch-themer/compare/0.0.6...HEAD
+[0.0.6]: https://github.com/builders-club/vscode-twitch-themer/compare/edc07b4...0.0.6
