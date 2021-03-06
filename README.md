@@ -54,15 +54,18 @@ setting in VS Code, so we won't collect any data unless this setting is turned o
 
 ## Development and Contributing
 
-Interested in contributing? We ❤️ pull requests! See the
-[Contribution](./CONTRIBUTING.md) guidelines.
+Interested in contributing? We ❤️ pull requests! 
+
+To make sure our community is safe for all, be sure to review and agree to our 
+[Code of Conduct](./CODE_OF_CONDUCT.md). Then see the
+[Contribution](./CONTRIBUTING.md) guidelines for more information.
 
 ## Getting Help
 
 We love to hear from you so if you have questions, comments or find a bug in the
 project, let us know! You can either:
 
-- Open an issue on this repository
+- [Open an issue](https://github.com/Vonage/vscode/issues/new) on this repository
 - Tweet at us! We're [@VonageDev on Twitter](https://twitter.com/VonageDev)
 - Or [join the Vonage Developer Community Slack](https://developer.nexmo.com/community/slack)
 
