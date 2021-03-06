@@ -1,5 +1,5 @@
 {
-  "name": "@vonage/vscode",
+  "name": "vonage-vscode",
   "version": "0.0.2",
   "description": "A Visual Studio Code extension for accessing the Vonage communication APIs.",
   "main": "./dist/extension",
