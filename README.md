@@ -1,16 +1,18 @@
 # Vonage for Visual Studio Code
 
+[![Marketplace](https://vsmarketplacebadge.apphb.com/version/Vonage.vscode.svg?color=blue&style=?style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=Vonage.vscode) [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/Vonage.vscode.svg?color=blue&style=flat-square)](https://marketplace.visualstudio.com/items?itemName=Vonage.vscode) [![MIT](https://img.shields.io/badge/license-MIT-orange.svg?color=orange&style=flat-square)](https://opensource.org/licenses/MIT) [![CI](https://github.com/Vonage/vscode/actions/workflows/CI.yml/badge.svg)](https://github.com/Vonage/vscode/actions/workflows/CI.yml)
+
 A Visual Studio Code extension for accessing the Vonage communication APIs.
 
 ![Example of the Vonage for Visual Studio Code extension](https://user-images.githubusercontent.com/1228996/110222188-13f5c480-7e96-11eb-95eb-452c72512e7d.png)
+
+---
 
 ## Install Vonage for VS Code
 
 You can find the Vonage for Visual Studio Code extension in the
 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=Vonage.vscode).
 Click Install to add the extension to your editor.
-
----
 
 ## Features
 
