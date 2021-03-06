@@ -1,6 +1,6 @@
 {
   "name": "vscode",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Visual Studio Code extension for accessing the Vonage communication APIs.",
   "main": "./dist/extension",
   "repository": {
