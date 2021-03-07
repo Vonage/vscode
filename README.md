@@ -31,14 +31,20 @@ Additionally, capabilities (voice, messages, RTC, VBC) and be added, edited, and
 from applications via the right-click context menu. You can also open the application
 within the Vonage API dashboard.
 
-![Example of adding, editing and deleting an application with the extension](
-https://user-images.githubusercontent.com/1228996/110222548-af883480-7e98-11eb-9d3b-04ae9d3fda5e.gif)
+![Example of adding, editing and deleting an application with the extension](https://user-images.githubusercontent.com/1228996/110222548-af883480-7e98-11eb-9d3b-04ae9d3fda5e.gif)
 
 ### Numbers
 
 The Numbers view provides the ability to view all purchased numbers in your account.
 
 ![Viewing numbers and their capabilities from within the extension](https://user-images.githubusercontent.com/1228996/110222715-e4e15200-7e99-11eb-8ee3-172f30dc524c.gif)
+
+### Account
+
+The Account view allows you to quickly review your balance. For privacy, click the
+balance to toggle its visibility.
+
+![Viewing and toggling visibility of the account balance](https://user-images.githubusercontent.com/1228996/110227356-4a930580-7ebd-11eb-80b7-b80047a22b43.gif)
 
 ### Documentation & Help
 

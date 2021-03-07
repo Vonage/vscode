@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- New Account view that displays the current balance of the account.
+  - Clicking on the balance will toggle its display for privacy.
+
 ---
 
-## [0.0.6] - 2021-03-06
+## [0.0.8] - 2021-03-06
 
 ### Added
 
@@ -22,5 +27,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Quick access to Vonage API dashboard
   - Initial README, CONTRIBUTING, etc.
 
-[unreleased]: https://github.com/builders-club/vscode-twitch-themer/compare/0.0.6...HEAD
-[0.0.6]: https://github.com/builders-club/vscode-twitch-themer/compare/edc07b4...0.0.6
+[unreleased]: https://github.com/builders-club/vscode-twitch-themer/compare/0.0.8...HEAD
+[0.0.8]: https://github.com/builders-club/vscode-twitch-themer/compare/edc07b4...0.0.8
