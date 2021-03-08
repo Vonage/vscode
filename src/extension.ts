@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { GoogleAnalyticsTelemetry, LocalTelemetry } from './telemetry';
 import {
+  AccountViewDataProvider,
   ApplicationViewDataProvider,
   HelpViewDataProvider,
   NumbersViewDataProvider
@@ -10,6 +11,7 @@ import {
   TelemetryPrompt
 } from './prompts';
 import {
+  AccountCommands,
   ApplicationCommands,
   AuthCommands,
   HelpCommands,
@@ -61,13 +63,17 @@ export class Extension {
     /**
      * Register commands & views
      */
-    const vonageApplicationViewDataProvider = new ApplicationViewDataProvider();
+    const applicationViewDataProvider = new ApplicationViewDataProvider();
+    const accountViewDataProvider = new AccountViewDataProvider(_context.globalState);
+    const numbersViewDataProvider = new NumbersViewDataProvider();
+    const helpViewDataProvider = new HelpViewDataProvider();
     const subscriptions = _context.subscriptions;
 
-    const authCommands = new AuthCommands(subscriptions, telemetry);
-    const applicationCommands = new ApplicationCommands(subscriptions, telemetry, vonageApplicationViewDataProvider);
-    const numbersCommands = new NumbersCommands(subscriptions, telemetry, new NumbersViewDataProvider());
-    const helpCommands = new HelpCommands(subscriptions, telemetry, new HelpViewDataProvider());
+    new AuthCommands(subscriptions, telemetry);
+    const applicationCommands = new ApplicationCommands(subscriptions, telemetry, applicationViewDataProvider);
+    const accountCommands = new AccountCommands(subscriptions, telemetry, accountViewDataProvider);
+    const numbersCommands = new NumbersCommands(subscriptions, telemetry, numbersViewDataProvider);
+    const helpCommands = new HelpCommands(subscriptions, telemetry, helpViewDataProvider);
 
     /**
      * Register changes in authentication to update views
@@ -76,6 +82,7 @@ export class Extension {
     const authStatusChanged = async (credentials: Credentials) => {
       applicationCommands.refreshAppsList();
       numbersCommands.refreshNumbersList();
+      await accountCommands.refresh();
       await helpCommands.refresh();
     }
 
@@ -85,15 +92,19 @@ export class Extension {
      * Register tree views within activity bar
      */
     vscode.window.createTreeView('vonageAppView', {
-      treeDataProvider: vonageApplicationViewDataProvider,
+      treeDataProvider: applicationViewDataProvider,
       showCollapseAll: false,
     });
     vscode.window.createTreeView('vonageNumbersView', {
-      treeDataProvider: new NumbersViewDataProvider(),
+      treeDataProvider: numbersViewDataProvider,
+      showCollapseAll: false,
+    });
+    vscode.window.createTreeView('vonageAccountView', {
+      treeDataProvider: accountViewDataProvider,
       showCollapseAll: false,
     });
     vscode.window.createTreeView('vonageHelpView', {
-      treeDataProvider: new HelpViewDataProvider(),
+      treeDataProvider: helpViewDataProvider,
       showCollapseAll: false,
     });
   }

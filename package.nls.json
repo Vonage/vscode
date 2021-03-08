@@ -1,7 +1,8 @@
 {
   "vonage-vscode.applications": "Applications",
   "vonage-vscode.numbers": "Numbers",
-  "vonage-vscode.help": "Help and feedback",
+  "vonage-vscode.account": "Account",
+  "vonage-vscode.help": "Help and Feedback",
   "vonage-vscode.login": "Sign in",
   "vonage-vscode.logout": "Sign out",
   "vonage-vscode.help.reportIssue": "Report issue",
