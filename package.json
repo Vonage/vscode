@@ -100,27 +100,27 @@
         "command": "vonage.help.openDocs",
         "title": "Open extension documentation",
         "icon": "$(book)",
-        "enablement": "vonage:authenticated && view == vonageHelpView"
+        "enablement": "view == vonageHelpView"
       },
       {
         "category": "Vonage",
         "command": "vonage.help.openReportIssue",
         "title": "Report issue",
         "icon": "$(report)",
-        "enablement": "vonage:authenticated && view == vonageHelpView"
+        "enablement": "view == vonageHelpView"
       },
       {
         "category": "Vonage",
         "command": "vonage.help.openSurvey",
         "title": "Rate and provide feedback",
         "icon": "$(feedback)",
-        "enablement": "vonage:authenticated && view == vonageHelpView"
+        "enablement": "view == vonageHelpView"
       },
       {
         "category": "Vonage",
         "command": "vonage.help.openTelemetryInfo",
         "title": "Telemetry info",
-        "enablement": "vonage:authenticated && view == vonageHelpView"
+        "enablement": "view == vonageHelpView"
       },
       {
         "category": "Vonage",
