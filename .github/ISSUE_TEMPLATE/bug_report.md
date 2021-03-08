@@ -1,5 +1,10 @@
-name: Bug Report
-about: Something is occurring that I think is wrong.
+---
+name: Bug report
+about: Something is occurring that I think is wrong
+title: ''
+labels: "\U0001F41B bug"
+assignees: ''
+
 ---
 
 ## What is the current behavior?
@@ -21,7 +26,6 @@ about: Something is occurring that I think is wrong.
   - **Extension Version:** 0.0.7
   - **Language:** [all | TypeScript | Python | PHP | etc]
   - **VS Code version:** 1.53.0
-
 
 ## Other information
 
