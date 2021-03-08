@@ -42,6 +42,7 @@
   "activationEvents": [
     "onView:vonageApplicationView",
     "onView:vonageNumbersView",
+    "onView:vonageAccountView",
     "onView:vonageHelpView",
     "onCommand:vonage.app.refreshAppsList",
     "onCommand:vonage.app.addApp",
@@ -62,6 +63,8 @@
     "onCommand:vonage.numbers.refreshNumbersList",
     "onCommand:vonage.numbers.filterNumbers",
     "onCommand:vonage.numbers.buyNumber",
+    "onCommand:vonage.account.refresh",
+    "onCommand:vonage.account.toggleBalanceView",
     "onCommand:vonage:login",
     "onCommand:vonage:logout",
     "onCommand:vonage.help.openDocs",
@@ -121,6 +124,19 @@
         "command": "vonage.help.openTelemetryInfo",
         "title": "Telemetry info",
         "enablement": "view == vonageHelpView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.account.refresh",
+        "title": "Refresh account",
+        "icon": "$(refresh)",
+        "enablement": "vonage:authenticated && view == vonageAccountView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.account.toggleBalanceView",
+        "title": "Toggle visibility",
+        "enablement": "vonage:authenticated && view == vonageAccountView"
       },
       {
         "category": "Vonage",
@@ -271,6 +287,11 @@
           "command": "vonage.numbers.refreshNumbersList",
           "when": "vonage:authenticated && view == vonageNumbersView",
           "group": "navigation"
+        },
+        {
+          "command": "vonage.account.refresh",
+          "when": "vonage:authenticated && view == vonageAccountView",
+          "group": "navigation"
         }
       ],
       "view/item/context": [
@@ -362,6 +383,12 @@
         {
           "id": "vonageNumbersView",
           "name": "%vonage-vscode.numbers%",
+          "visibility": "collapsed",
+          "when": "vonage:authenticated"
+        },
+        {
+          "id": "vonageAccountView",
+          "name": "%vonage-vscode.account%",
           "visibility": "collapsed",
           "when": "vonage:authenticated"
         },

@@ -1,3 +1,4 @@
+export * from './accountCommands';
 export * from './applicationCommands';
 export * from './authCommands';
 export * from './helpCommands';

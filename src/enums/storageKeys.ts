@@ -14,4 +14,8 @@ export enum StorageKeys {
    * Last date the survey prompt was displayed
    */
   lastSurveyDate = 'vonageLastSurveyDate',
+  /**
+   * Whether to hide the account balance by default
+   */
+  hideAccountBalance = 'hideAccountBalance'
 }
