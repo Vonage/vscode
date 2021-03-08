@@ -24,7 +24,7 @@ export abstract class LoginFlow {
       step: 1,
       totalSteps: 2,
       value: typeof state.api_key === 'string' ? state.api_key : '',
-      prompt: 'Choose a name for the application',
+      prompt: 'Vonage API Key',
       validate: this.validateString,
       shouldResume: this.shouldResume
     });
@@ -37,7 +37,7 @@ export abstract class LoginFlow {
       step: 2,
       totalSteps: 2,
       value: typeof state.api_secret === 'string' ? state.api_secret : '',
-      prompt: 'Vonage API Secret.',
+      prompt: 'Vonage API Secret',
       validate: this.validateString,
       shouldResume: this.shouldResume
     });
