@@ -1,17 +1,21 @@
 {
-  "extends": [
-    "prettier"
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"plugins": [
+		"@typescript-eslint"
   ],
-  "rules": {
-    "no-use-before-define": "off",
-    "linebreak-style": "off"
-  },
-  "globals": {
-    "localStorage": false,
-    "window": false,
-    "Audio": false,
-    "io": false,
-    "$": false,
-    "document": false
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended"
+  ],
+	"rules": {
+		"semi": [
+      2,
+      "always"
+    ],
+		"@typescript-eslint/no-unused-vars": 0,
+		"@typescript-eslint/no-explicit-any": 0,
+		"@typescript-eslint/explicit-module-boundary-types": 0,
+		"@typescript-eslint/no-non-null-assertion": 0
   }
 }
