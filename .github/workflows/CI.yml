@@ -1,13 +1,10 @@
 name: CI
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main, dev ]
 jobs:
   build:
-    if: github.event.head_commit.committer.name != 'Versioning Action'
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
@@ -20,6 +17,7 @@ jobs:
       with:
         node-version: 10.x
     - run: npm install
+    - run: npm run lint
     - run: xvfb-run -a npm test
       if: runner.os == 'Linux'
     - run: npm test

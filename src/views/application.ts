@@ -15,8 +15,8 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
   async buildTree(): Promise<ApplicationTreeItem[]> {
     const applications = await VonageClient.application.getApplications();
     return Promise.resolve(applications.map((app: any) => {
-      return new ApplicationTreeItem(app)
-    }))
+      return new ApplicationTreeItem(app);
+    }));
   }
 
   /** Application Commands */
@@ -46,7 +46,7 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
 
     const state = await CreateApplicationFlow.collectInputs();
 
-    let application = node.application;
+    const application = node.application;
     application.name = state.name;
     application.public_key = state.public_key;
 
@@ -93,7 +93,7 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
   async addVoice(node: ApplicationTreeItem): Promise<void> {
     const state = await VoiceCapabilityFlow.collectInputs(`Add Voice Capability to application ${node.label}`,);
 
-    let application = node.application;
+    const application = node.application;
 
     application.capabilities.voice =
     {
@@ -130,7 +130,7 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
     const state = await VoiceCapabilityFlow.collectInputs(`Update Voice Capability for application ${node.label}`, node);
 
 
-    let application = node.application;
+    const application = node.application;
 
     application.capabilities.voice =
     {
@@ -175,7 +175,7 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
 
     const result = await showWarningMessage(confirmDelete, undefined, { modal: true }, { title: 'Disable' });
 
-    let application = node.application;
+    const application = node.application;
     delete application.capabilities.voice;
 
     if (result === true) {
@@ -202,7 +202,7 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
   async addRTC(node: ApplicationTreeItem): Promise<void> {
     const state = await RTCCapabilityFlow.collectInputs(`Add RTC Capability to application ${node.label}`,);
 
-    let application = node.application;
+    const application = node.application;
 
     application.capabilities.rtc =
     {
@@ -230,7 +230,7 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
   async updateRTC(node: ApplicationTreeItem): Promise<void> {
     const state = await RTCCapabilityFlow.collectInputs(`Update RTC Capability for application ${node.label}`, node);
 
-    let application = node.application;
+    const application = node.application;
 
     application.capabilities.rtc =
     {
@@ -261,7 +261,7 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
 
     const result = await showWarningMessage(confirmDelete, undefined, { modal: true }, { title: 'Disable' });
 
-    let application = node.application;
+    const application = node.application;
     delete application.capabilities.rtc;
 
     if (result === true) {
@@ -288,7 +288,7 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
   async addMessages(node: ApplicationTreeItem): Promise<void> {
     const state = await MessageCapabilityFlow.collectInputs(`Add Messages Capability to application ${node.label}`,);
 
-    let application = node.application;
+    const application = node.application;
 
     application.capabilities.messages =
     {
@@ -320,7 +320,7 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
   async updateMessages(node: ApplicationTreeItem): Promise<void> {
     const state = await MessageCapabilityFlow.collectInputs(`Update Messages Capability on application ${node.label}`,);
 
-    let application = node.application;
+    const application = node.application;
 
     application.capabilities.messages =
     {
@@ -355,7 +355,7 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
 
     const result = await showWarningMessage(confirmDelete, undefined, { modal: true }, { title: 'Disable' });
 
-    let application = node.application;
+    const application = node.application;
     delete application.capabilities.messages;
 
     if (result === true) {
@@ -381,7 +381,7 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
 
   async addVBC(node: ApplicationTreeItem): Promise<void> {
 
-    let application = node.application;
+    const application = node.application;
 
     application.capabilities.vbc =
     {
@@ -406,7 +406,7 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
 
     const result = await showWarningMessage(confirmDelete, undefined, { modal: true }, { title: 'Disable' });
 
-    let application = node.application;
+    const application = node.application;
     delete application.capabilities.vbc;
 
     if (result === true) {

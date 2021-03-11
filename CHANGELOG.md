@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Adding unit tests for existing extension capabilities
+- CI process now confirms all tests pass on Linux, macOS, and Windows
+
 ---
 
 ## [0.0.10] - 2021-03-08

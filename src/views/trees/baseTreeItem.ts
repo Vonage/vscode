@@ -9,7 +9,7 @@ export class BaseTreeItem extends vscode.TreeItem {
     collapsibleState: vscode.TreeItemCollapsibleState = vscode.TreeItemCollapsibleState.None,
     icon: string,
     command?: vscode.Command,
-    contextValue: string = 'vonage') {
+    contextValue = 'vonage') {
     super(label, collapsibleState);
     this.command = command;
     this.contextValue = contextValue;

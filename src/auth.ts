@@ -96,7 +96,7 @@ export class Auth {
       const headers = {
         Authorization: `Basic ${base64}`,
         "Content-Type": 'application/json'
-      }
+      };
       return headers;
     }
     return {};
@@ -130,4 +130,3 @@ export class Auth {
     >('keytar');
   }
 }
-

@@ -42,7 +42,7 @@ export class ApplicationTreeItem extends BaseTreeItem {
       let webhooks;
       if (capabilities[cap].webhooks) {
         webhooks = Object.keys(capabilities[cap].webhooks).map((webhook) => {
-          return { name: webhook, ...capabilities[cap].webhooks[webhook] }
+          return { name: webhook, ...capabilities[cap].webhooks[webhook] };
         });
       }
       return { capability: cap, webhooks };

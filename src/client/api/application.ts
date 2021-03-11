@@ -7,8 +7,6 @@ export class ApplicationAPI {
 
   private appUrl = 'https://api.nexmo.com/v2/applications';
 
-  constructor() { }
-
   async getApplications(): Promise<any> {
     const isAuthenticated = await Auth.isAuthenticated();
     if (!isAuthenticated) {

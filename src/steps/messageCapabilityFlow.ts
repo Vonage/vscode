@@ -15,10 +15,10 @@ export interface MessageCapabilityState {
 
 export abstract class MessageCapabilityFlow {
 
-  static title: string = ''
+  private static title = '';
 
   public static async collectInputs(title: string, existingState?: ApplicationTreeItem): Promise<MessageCapabilityState> {
-    let state = {} as Partial<MessageCapabilityState>;
+    const state = {} as Partial<MessageCapabilityState>;
     this.title = title;
     state.inbound_url_http_method = 'POST';
     state.status_url_http_method = 'POST';
@@ -77,7 +77,7 @@ export abstract class MessageCapabilityFlow {
     }
     let timeoutValue = 0;
     try {
-      timeoutValue = parseInt(timeout)
+      timeoutValue = parseInt(timeout);
     } catch (err) {
       return 'Connection timeout must be numeric';
     }
@@ -93,7 +93,7 @@ export abstract class MessageCapabilityFlow {
     }
     let timeoutValue = 0;
     try {
-      timeoutValue = parseInt(timeout)
+      timeoutValue = parseInt(timeout);
     } catch (err) {
       return 'Socket timeout must be numeric';
     }

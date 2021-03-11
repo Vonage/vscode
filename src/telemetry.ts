@@ -18,7 +18,9 @@ export class NoOpTelemetry implements Telemetry {
    * @param eventName Name of the event that occurred
    * @param eventValue Optional value of the event
    */
-  sendEvent(eventName: string, eventValue?: any) { }
+  sendEvent(eventName: string, eventValue?: any) {
+    return;
+  }
 
   /**
    * NoOp implementation of identifying if telemetry is enabled

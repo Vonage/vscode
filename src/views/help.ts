@@ -28,8 +28,8 @@ export class HelpViewDataProvider extends BaseTreeViewDataProvider {
         title: '',
         arguments: undefined,
       })
-    ]
+    ];
 
-    return Promise.resolve(items)
+    return Promise.resolve(items);
   }
 }

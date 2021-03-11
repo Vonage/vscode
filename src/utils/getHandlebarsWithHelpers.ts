@@ -18,14 +18,14 @@ export function getHandlebarsWithHelpers(): typeof Handlebars {
   });
 
   handlebars.registerHelper('properCase', (text: string) => {
-    let words = text.split('_');
+    const words = text.split('_');
     return words.map(w => {
       if (w.length < 4) {
         return w.toLocaleUpperCase();
       } else {
         return w[0].toLocaleUpperCase() + w.substr(1, w.length - 1);
       }
-    }).join(' ')
+    }).join(' ');
   });
 
   handlebars.registerHelper('substr', (a: string, from: number, length?: number | unknown) => {

@@ -36,23 +36,11 @@ For a contribution to be accepted:
 If the contribution doesn't meet these criteria, a maintainer will discuss it with you on the Issue. You can still
 continue to add more commits to the branch you have sent the Pull Request from.
 
-## Branching / Processes
-
-We maintain two primary branches:
-
-- `main`: Code that correlates to the latest released version of the extension
-- `dev`: Code that is pending release to the Visual Studio Code marketplace
-
-When submitting pull requests, be sure to create your development branch and submit pull requests targeting the
-`dev` branch. Merged pull requests will live here until the maintainers merge them to the `main` branch
-for an official release.
-
 ## How To
 
 1. Fork this repository on GitHub.
 1. Clone/fetch your fork to your local development machine.
-1. Check out and pull the `dev` branch. 
 1. Create a new branch (e.g. `issue-12`, `feat.add_foo`, etc) and check it out.
-1. Make your changes and commit them. (Did the tests pass?)
+1. Make your changes and commit them. (Did the tests pass? No linting errors?)
 1. Push your new branch to your fork. (e.g. `git push myname issue-12`)
-1. Open a Pull Request from your new branch to the original fork's `dev` branch.
+1. Open a Pull Request from your new branch to the original fork's `main` branch.

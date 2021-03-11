@@ -4,8 +4,6 @@ import { Auth } from '../../auth';
 
 export class AccountAPI {
 
-  constructor() { }
-
   private appUrl = 'https://rest.nexmo.com/account';
 
   /**
