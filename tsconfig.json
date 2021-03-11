@@ -3,14 +3,16 @@
     "module": "commonjs",
     "target": "es2019",
     "outDir": "out",
-    "lib": [
-      "es6"
-    ],
-    "rootDir": "src",
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true
   },
+  "include": [
+    "src",
+    "test",
+    "test/suite/fakes",
+    ".github/prompts"
+  ],
   "exclude": [
     "node_modules",
     ".vscode-test"

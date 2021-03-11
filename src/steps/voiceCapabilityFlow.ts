@@ -17,10 +17,10 @@ export interface VoiceCapabilityState {
 
 export abstract class VoiceCapabilityFlow {
 
-  static title: string = ''
+  private static title = '';
 
   public static async collectInputs(title: string, existingState?: ApplicationTreeItem): Promise<VoiceCapabilityState> {
-    let state = {} as Partial<VoiceCapabilityState>;
+    const state = {} as Partial<VoiceCapabilityState>;
     this.title = title;
 
     if (existingState) {
@@ -123,6 +123,7 @@ export abstract class VoiceCapabilityFlow {
       // noop
     });
   }
+  
   private static async validateAddress(address: string) {
     return (address && address.trim().length > 0) ? undefined : 'Address is required';
   }

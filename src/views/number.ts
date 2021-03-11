@@ -3,13 +3,13 @@ import { NumberTreeItem, BaseTreeViewDataProvider } from './trees';
 
 export class NumbersViewDataProvider extends BaseTreeViewDataProvider {
 
-  private hasNumbers: boolean = false;
+  private hasNumbers = false;
 
   async buildTree(): Promise<NumberTreeItem[]> {
     const numbers = await VonageClient.numbers.getNumbers(this.hasNumbers);
 
     return Promise.resolve(numbers.map((num: any) => {
-      return new NumberTreeItem(num)
+      return new NumberTreeItem(num);
     }));
   }
 

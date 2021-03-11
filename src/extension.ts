@@ -84,7 +84,7 @@ export class Extension {
       numbersCommands.refreshNumbersList();
       await accountCommands.refresh();
       await helpCommands.refresh();
-    }
+    };
 
     Auth.onAuthStatusChanged(authStatusChanged);
 

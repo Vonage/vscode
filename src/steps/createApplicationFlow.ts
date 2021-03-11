@@ -13,7 +13,7 @@ const title = 'Create Application';
 export abstract class CreateApplicationFlow {
 
   public static async collectInputs(): Promise<CreateApplicationState> {
-    let state = {} as Partial<CreateApplicationState>;
+    const state = {} as Partial<CreateApplicationState>;
     await MultiStepInput.run(input => this.inputApplicationName(input, state));
     return state as CreateApplicationState;
   }

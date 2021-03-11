@@ -13,7 +13,7 @@ export class AccountViewDataProvider extends BaseTreeViewDataProvider {
   }
 
   async buildTree(): Promise<BaseTreeItem[]> {
-    let currentHideState = this.storage.get(StorageKeys.hideAccountBalance) as boolean || false;
+    const currentHideState = this.storage.get(StorageKeys.hideAccountBalance) as boolean || false;
     let balance = "€ ----";
 
     if (!currentHideState) {
@@ -32,7 +32,7 @@ export class AccountViewDataProvider extends BaseTreeViewDataProvider {
       },
       'account');
 
-    accountTreeItem.tooltip = "Click to toggle visibility"
+    accountTreeItem.tooltip = "Click to toggle visibility";
 
     return [
       accountTreeItem
@@ -40,7 +40,7 @@ export class AccountViewDataProvider extends BaseTreeViewDataProvider {
   }
 
   toggleBalanceView(): void {
-    let currentHideState = this.storage.get(StorageKeys.hideAccountBalance) as boolean || false;
+    const currentHideState = this.storage.get(StorageKeys.hideAccountBalance) as boolean || false;
 
     this.storage.update(StorageKeys.hideAccountBalance, !currentHideState);
     this.refresh();

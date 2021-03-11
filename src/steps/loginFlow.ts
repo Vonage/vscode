@@ -13,7 +13,7 @@ const title = 'Provide Vonage API Credentials';
 export abstract class LoginFlow {
 
   public static async collectInputs(): Promise<LoginState> {
-    let state = {} as Partial<LoginState>;
+    const state = {} as Partial<LoginState>;
     await MultiStepInput.run(input => this.inputAPIKey(input, state));
     return state as LoginState;
   }

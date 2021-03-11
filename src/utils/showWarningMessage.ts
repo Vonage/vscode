@@ -1,6 +1,7 @@
 import { MessageItem, window } from 'vscode';
 import { openUrl } from './openUrl';
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 namespace DialogResponses {
   export const yes: MessageItem = { title: 'Yes' };
   export const no: MessageItem = { title: 'No' };

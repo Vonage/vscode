@@ -13,10 +13,10 @@ export interface RTCCapabilityState {
 
 export abstract class RTCCapabilityFlow {
 
-  static title: string = ''
+  private static title = '';
 
   public static async collectInputs(title: string, existingState?: ApplicationTreeItem): Promise<RTCCapabilityState> {
-    let state = {} as Partial<RTCCapabilityState>;
+    const state = {} as Partial<RTCCapabilityState>;
     this.title = title;
 
     if (existingState) {
@@ -60,8 +60,8 @@ export abstract class RTCCapabilityFlow {
       // noop
     });
   }
+  
   private static async validateAddress(address: string) {
     return (address && address.trim().length > 0) ? undefined : 'Address is required';
   }
-
 }

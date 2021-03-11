@@ -1,6 +1,6 @@
 # Vonage for Visual Studio Code
 
-[![Marketplace](https://vsmarketplacebadge.apphb.com/version/Vonage.vscode.svg?color=blue&style=?style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=Vonage.vscode) [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/Vonage.vscode.svg?color=blue&style=flat-square)](https://marketplace.visualstudio.com/items?itemName=Vonage.vscode) [![MIT](https://img.shields.io/badge/license-MIT-orange.svg?color=orange&style=flat-square)](https://opensource.org/licenses/MIT)
+[![Marketplace](https://vsmarketplacebadge.apphb.com/version/Vonage.vscode.svg?color=blue?style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=Vonage.vscode) [![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/Vonage.vscode?color=%23ff00ff&logo=Vonage)](https://marketplace.visualstudio.com/items?itemName=Vonage.vscode) [![MIT](https://img.shields.io/badge/license-MIT-orange.svg?color=%2300ffff)](https://opensource.org/licenses/MIT)
 
 A Visual Studio Code extension for accessing the Vonage communication APIs.
 

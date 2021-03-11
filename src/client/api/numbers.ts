@@ -4,8 +4,6 @@ import { Auth } from '../../auth';
 
 export class NumbersAPI {
 
-  constructor() { }
-
   private appUrl = 'https://rest.nexmo.com/account/numbers';
 
   async getNumbers(hasApplication?: boolean): Promise<any> {

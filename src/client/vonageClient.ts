@@ -1,4 +1,4 @@
-import { AccountAPI, ApplicationAPI, NumbersAPI } from "./api"
+import { AccountAPI, ApplicationAPI, NumbersAPI } from "./api";
 
 export abstract class VonageClient {
 
