@@ -45,15 +45,15 @@ export class NumbersViewDataProvider extends BaseTreeViewDataProvider {
   }
 
   async cancelNumber(node: NumberTreeItem): Promise<void> {
-    const confirmDelete = `Are you sure you want to cancel "${node.label}"? This cannot be undone.`;
+    const confirmDelete = `Are you sure you want to remove "${node.label}"? This cannot be undone.`;
 
-    const result = await showWarningMessage(confirmDelete, undefined, { modal: true }, { title: 'Cancel' });
+    const result = await showWarningMessage(confirmDelete, undefined, { modal: true }, { title: 'Remove' });
 
     if (result === true) {
 
       const deleteResult = await vscode.window.withProgress({
         location: vscode.ProgressLocation.Notification,
-        title: `Canceling number "${node.label}"...`
+        title: `Removing number "${node.label}"...`
       }, async () => {
         return await VonageClient.numbers.cancelNumber(node.number);
       });
@@ -61,7 +61,7 @@ export class NumbersViewDataProvider extends BaseTreeViewDataProvider {
       if (deleteResult) {
         this.refresh();
         numberAssignmentEventEmitter.fire('');
-        vscode.window.showInformationMessage(`Successfully canceled number "${node.label}".`);
+        vscode.window.showInformationMessage(`Successfully removed number "${node.label}".`);
       }
     } else {
       return;

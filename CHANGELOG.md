@@ -9,9 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Users may assign numbers to an application using the context menu on the Numbers view
-- Adding unit tests for existing extension capabilities
+- Applications now display as tree views that can be expanded to see assigned numbers
+- Numbers can be assigned to an application using the context menu on the Numbers view
+- Numbers can be removed from an application using the context menu on the Applications view
+- Numbers can be purchased using the context button on the Numbers view
+- Numbers can be canceled using the context menu on a number in any tree view
+- Numbers can be copied to the clipboard using the context menu on a number in any tree view
+
+### Updated
+
+- Extension now uses approved Vonage icons
+- Numbers view renamed Unassigned Numbers to reflect that it only displays numbers unassigned from an application
+
+### Infrastructure
+
 - CI process now confirms all tests pass on Linux, macOS, and Windows
+- CD process now generates versions on creation of releases in GitHub
+- Adding unit tests for existing extension capabilities
 
 ---
 
