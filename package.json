@@ -23,7 +23,7 @@
   },
   "publisher": "vonage",
   "icon": "resources/logo.png",
-  "preview": true,
+  "preview": false,
   "engines": {
     "vscode": "^1.53.0"
   },
