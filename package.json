@@ -3,7 +3,7 @@
   "displayName": "Vonage",
   "version": "0.0.10",
   "description": "A Visual Studio Code extension for accessing the Vonage communication APIs.",
-  "main": "./out/src/extension",
+  "main": "./dist/extension",
   "repository": {
     "type": "git",
     "url": "https://github.com/vonage/vscode"
@@ -61,8 +61,9 @@
     "onCommand:vonage.app.vbc.add",
     "onCommand:vonage.app.vbc.delete",
     "onCommand:vonage.numbers.refreshNumbersList",
-    "onCommand:vonage.numbers.filterNumbers",
+    "onCommand:vonage.numbers.toggleFilter",
     "onCommand:vonage.numbers.buyNumber",
+    "onCommand:vonage.numbers.assignNumber",
     "onCommand:vonage.account.refresh",
     "onCommand:vonage.account.toggleBalanceView",
     "onCommand:vonage:login",
@@ -89,34 +90,49 @@
         "category": "Vonage",
         "command": "vonage.login",
         "title": "Sign in",
-        "icon": "$(lock)"
+        "icon": {
+          "light": "resources/icons/light/key-line.svg",
+          "dark": "resources/icons/dark/key-line.svg"
+        }
       },
       {
         "category": "Vonage",
         "command": "vonage.logout",
         "title": "Sign out",
-        "icon": "$(lock)",
+        "icon": {
+          "light": "resources/icons/light/leave-line.svg",
+          "dark": "resources/icons/dark/leave-line.svg"
+        },
         "enablement": "vonage:authenticated"
       },
       {
         "category": "Vonage",
         "command": "vonage.help.openDocs",
         "title": "Open extension documentation",
-        "icon": "$(book)",
+        "icon": {
+          "light": "resources/icons/light/books-line.svg",
+          "dark": "resources/icons/dark/books-line.svg"
+        },
         "enablement": "view == vonageHelpView"
       },
       {
         "category": "Vonage",
         "command": "vonage.help.openReportIssue",
         "title": "Report issue",
-        "icon": "$(report)",
+        "icon": {
+          "light": "resources/icons/light/error-line.svg",
+          "dark": "resources/icons/dark/error-line.svg"
+        },
         "enablement": "view == vonageHelpView"
       },
       {
         "category": "Vonage",
         "command": "vonage.help.openSurvey",
         "title": "Rate and provide feedback",
-        "icon": "$(feedback)",
+        "icon": {
+          "light": "resources/icons/light/emoji-line.svg",
+          "dark": "resources/icons/dark/emoji-line.svg"
+        },
         "enablement": "view == vonageHelpView"
       },
       {
@@ -129,7 +145,10 @@
         "category": "Vonage",
         "command": "vonage.account.refresh",
         "title": "Refresh account",
-        "icon": "$(refresh)",
+        "icon": {
+          "light": "resources/icons/light/refresh-line.svg",
+          "dark": "resources/icons/dark/refresh-line.svg"
+        },
         "enablement": "vonage:authenticated && view == vonageAccountView"
       },
       {
@@ -142,35 +161,46 @@
         "category": "Vonage",
         "command": "vonage.app.refreshAppsList",
         "title": "Refresh applications list",
-        "icon": "$(refresh)",
+        "icon": {
+          "light": "resources/icons/light/refresh-line.svg",
+          "dark": "resources/icons/dark/refresh-line.svg"
+        },
         "enablement": "vonage:authenticated && view == vonageAppView"
       },
       {
         "category": "Vonage",
         "command": "vonage.app.addApp",
         "title": "Create application",
-        "icon": "$(plus)",
+        "icon": {
+          "light": "resources/icons/light/app-plus-line.svg",
+          "dark": "resources/icons/dark/app-plus-line.svg"
+        },
         "enablement": "vonage:authenticated && view == vonageAppView"
       },
       {
         "category": "Vonage",
         "command": "vonage.app.updateApp",
         "title": "Rename",
-        "icon": "$(save)",
         "enablement": "vonage:authenticated && view == vonageAppView"
       },
       {
         "category": "Vonage",
         "command": "vonage.app.deleteApp",
         "title": "Delete application",
-        "icon": "$(trash)",
+        "icon": {
+          "light": "resources/icons/light/delete-line.svg",
+          "dark": "resources/icons/dark/delete-line.svg"
+        },
         "enablement": "vonage:authenticated && view == vonageAppView"
       },
       {
         "category": "Vonage",
         "command": "vonage.app.link",
         "title": "View in dashboard",
-        "icon": "$(globe)",
+        "icon": {
+          "light": "resources/icons/light/chain-line.svg",
+          "dark": "resources/icons/dark/chain-line.svg"
+        },
         "enablement": "vonage:authenticated && view == vonageAppView"
       },
       {
@@ -243,22 +273,45 @@
         "category": "Vonage",
         "command": "vonage.numbers.refreshNumbersList",
         "title": "Refresh numbers",
-        "icon": "$(refresh)",
+        "icon": {
+          "light": "resources/icons/light/refresh-line.svg",
+          "dark": "resources/icons/dark/refresh-line.svg"
+        },
         "enablement": "vonage:authenticated && view == vonageNumbersView"
       },
       {
         "category": "Vonage",
         "command": "vonage.numbers.buyNumber",
         "title": "Buy number",
-        "icon": "$(plus)",
+        "icon": {
+          "light": "resources/icons/light/add-call-line.svg",
+          "dark": "resources/icons/dark/add-call-line.svg"
+        },
         "enablement": "vonage:authenticated && view == vonageNumbersView"
       },
       {
         "category": "Vonage",
-        "command": "vonage.numbers.filterNumbers",
-        "title": "Filter numbers",
-        "icon": "$(filter)",
+        "command": "vonage.numbers.cancelNumber",
+        "title": "Cancel number",
         "enablement": "vonage:authenticated && view == vonageNumbersView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.numbers.assign",
+        "title": "Assign number to application",
+        "enablement": "vonage:authenticated && view == vonageNumbersView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.numbers.unassign",
+        "title": "Remove number from application",
+        "enablement": "vonage:authenticated && view == vonageAppView"
+      },
+      {
+        "category": "Vonage",
+        "command": "vonage.numbers.copy",
+        "title": "Copy to clipboard",
+        "enablement": "vonage:authenticated && viewItem =~ /^number[a-z-]*/i"
       }
     ],
     "menus": {
@@ -275,11 +328,6 @@
         },
         {
           "command": "vonage.numbers.buyNumber",
-          "when": "vonage:authenticated && view == vonageNumbersView",
-          "group": "navigation"
-        },
-        {
-          "command": "vonage.numbers.filterNumbers",
           "when": "vonage:authenticated && view == vonageNumbersView",
           "group": "navigation"
         },
@@ -364,6 +412,26 @@
           "command": "vonage.app.updateApp",
           "when": "viewItem =~ /^application[a-z-]*/i",
           "group": "applications_9@1"
+        },
+        {
+          "command": "vonage.numbers.copy",
+          "when": "viewItem =~ /^number[a-z-]*/i",
+          "group": "numbers_1@1"
+        },
+        {
+          "command": "vonage.numbers.assign",
+          "when": "view == vonageNumbersView && viewItem =~ /(?!.*-app)^number[a-z-]*/g",
+          "group": "numbers_1@2"
+        },
+        {
+          "command": "vonage.numbers.unassign",
+          "when": "view == vonageAppView && viewItem =~ /^number[a-z-]*/i",
+          "group": "numbers_1@2"
+        },
+        {
+          "command": "vonage.numbers.cancelNumber",
+          "when": "viewItem =~ /^number[a-z-]*/i",
+          "group": "numbers_2@1"
         }
       ]
     },
@@ -419,11 +487,13 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
+    "package": "npx vsce package -o release.vsix",
+    "vscode:prepublish": "webpack --mode production",
+    "compile": "tsc -p ./ && webpack",
     "lint": "eslint --ext .ts .",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile",
+    "webpack": "webpack --mode production",
     "test": "node ./out/test/runTest.js"
   },
   "dependencies": {
@@ -451,14 +521,18 @@
     "@typescript-eslint/eslint-plugin": "^4.16.0",
     "@typescript-eslint/parser": "^4.16.0",
     "chai": "^4.3.3",
+    "copy-webpack-plugin": "^7.0.0",
     "eslint": "^7.21.0",
     "glob": "^7.1.4",
     "mocha": "^8.2.1",
     "sinon": "^9.2.1",
     "source-map-support": "^0.5.12",
+    "ts-loader": "^8.0.14",
     "typescript": "^4.2.2",
     "vscode-codicons": "0.0.14",
     "vscode-nls-dev": "^3.3.2",
-    "vscode-test": "^1.4.1"
+    "vscode-test": "^1.4.1",
+    "webpack": "^5.19.0",
+    "webpack-cli": "^4.4.0"
   }
 }

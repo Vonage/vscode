@@ -19,6 +19,7 @@ import {
 } from './commands';
 import { Auth } from './auth';
 import { Credentials } from './models';
+import { StorageKeys } from './enums';
 
 let activeExtension: Extension;
 let _context: vscode.ExtensionContext;
@@ -26,7 +27,7 @@ let _context: vscode.ExtensionContext;
 export class Extension {
 
   private onAuthStatusChangedEvent = new vscode.EventEmitter<Credentials>();
-
+  
   /**
    * Activate the extension
    */
@@ -40,7 +41,7 @@ export class Extension {
      */
     const authenticated = await Auth.isAuthenticated();
     vscode.commands.executeCommand('setContext', 'vonage:authenticated', authenticated);
-
+    
     /**
      * Notify user of telemetry collection on first use.
      */
@@ -65,7 +66,7 @@ export class Extension {
      */
     const applicationViewDataProvider = new ApplicationViewDataProvider();
     const accountViewDataProvider = new AccountViewDataProvider(_context.globalState);
-    const numbersViewDataProvider = new NumbersViewDataProvider();
+    const numbersViewDataProvider = new NumbersViewDataProvider(_context.globalState);
     const helpViewDataProvider = new HelpViewDataProvider();
     const subscriptions = _context.subscriptions;
 
@@ -87,6 +88,11 @@ export class Extension {
     };
 
     Auth.onAuthStatusChanged(authStatusChanged);
+
+    const numberAssignmentChanged = async () => {
+      applicationCommands.refreshAppsList();
+    };
+    numbersViewDataProvider.onNumberAssignmentChanged(numberAssignmentChanged);
 
     /**
      * Register tree views within activity bar

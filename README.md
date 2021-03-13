@@ -29,15 +29,19 @@ key & secret.
 The Applications view provides capabilities to create, rename, and delete applications.
 Additionally, capabilities (voice, messages, RTC, VBC) and be added, edited, and removed
 from applications via the right-click context menu. You can also open the application
-within the Vonage API dashboard.
+within the Vonage API dashboard. Expanding an application will display all numbers
+associated with the application and provide the ability to remove that number from the
+application.
 
-![Example of adding, editing and deleting an application with the extension](https://user-images.githubusercontent.com/1228996/110222548-af883480-7e98-11eb-9d3b-04ae9d3fda5e.gif)
+![Example of adding, editing and deleting an application with the extension](https://user-images.githubusercontent.com/1228996/111038005-4e0e1b80-83ec-11eb-9f18-cba8619e7d04.gif)
 
 ### Numbers
 
-The Numbers view provides the ability to view all purchased numbers in your account.
+The Numbers view provides the ability to view all purchased numbers in your account
+that aren't assigned to an application, purchase new numbers, cancel a number, or copy
+a number to your clipboard.
 
-![Viewing numbers and their capabilities from within the extension](https://user-images.githubusercontent.com/1228996/110222715-e4e15200-7e99-11eb-8ee3-172f30dc524c.gif)
+![Viewing numbers and their capabilities from within the extension](https://user-images.githubusercontent.com/1228996/111038150-0c31a500-83ed-11eb-8412-62811001a2a1.gif)
 
 ### Account
 

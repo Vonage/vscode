@@ -2,7 +2,6 @@
 'use strict';
 
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
 
 /**@type {import('webpack').Configuration}*/
 const config = {
@@ -41,16 +40,6 @@ const config = {
       }
     ]
   },
-  // plugins: [
-  //   new CopyPlugin({
-  //     patterns: [
-  //       { from: 'src/login', to: 'login' }
-  //     ],
-  //     options: {
-  //       concurrency: 100,
-  //     },
-  //   }),
-  // ],
   node: {
     __dirname: false
   }

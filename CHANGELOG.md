@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Users may assign numbers to an application using the context menu on the Numbers view
 - Adding unit tests for existing extension capabilities
 - CI process now confirms all tests pass on Linux, macOS, and Windows
 

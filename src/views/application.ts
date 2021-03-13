@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { openUrl, showWarningMessage } from '../utils';
-import { BaseTreeViewDataProvider } from './trees';
+import { BaseTreeViewDataProvider, NumberTreeItem } from './trees';
 import { ApplicationTreeItem } from './trees';
 import {
   CreateApplicationFlow,
@@ -9,14 +9,37 @@ import {
   MessageCapabilityFlow
 } from '../steps';
 import { VonageClient } from '../client/vonageClient';
+import { INumber } from '@vonage/server-sdk';
 
+const delayedLoad = () => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, 1000);
+  });
+};
 export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
 
-  async buildTree(): Promise<ApplicationTreeItem[]> {
+  public async getChildren(element?: any): Promise<vscode.TreeItem[]> {
+    if (element) {
+      if (element.application) {
+        await delayedLoad();
+        return await this.loadNumbers((element as ApplicationTreeItem).application.id);
+      }
+      return [];
+    }
     const applications = await VonageClient.application.getApplications();
-    return Promise.resolve(applications.map((app: any) => {
+    return applications.map((app: any) => {
       return new ApplicationTreeItem(app);
-    }));
+    });
+  }
+
+  private async loadNumbers(appId: string | undefined): Promise<NumberTreeItem[]> {
+    if (appId) {
+      const numbers = await VonageClient.numbers.getNumbers(appId);
+      return numbers.map((n: INumber) => {
+        return new NumberTreeItem(n);
+      });
+    }
+    return [];
   }
 
   /** Application Commands */
@@ -85,7 +108,6 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
     } else {
       return;
     }
-
   }
 
   /** Voice Commands */
@@ -129,7 +151,6 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
   async updateVoice(node: ApplicationTreeItem): Promise<void> {
     const state = await VoiceCapabilityFlow.collectInputs(`Update Voice Capability for application ${node.label}`, node);
 
-
     const application = node.application;
 
     application.capabilities.voice =
@@ -137,21 +158,15 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
       webhooks: {
         answer_url: {
           address: state.answer_url_address,
-          http_method: state.answer_url_http_method,
-          // connection_timeout: parseInt(state.answer_url_connection_timeout),
-          // socket_timeout: parseInt(state.answer_url_socket_timeout)
+          http_method: state.answer_url_http_method
         },
         fallback_answer_url: {
           address: state.fallback_answer_url_address,
-          http_method: state.fallback_answer_url_http_method,
-          // connection_timeout: parseInt(state.fallback_answer_url_connection_timeout),
-          // socket_timeout: parseInt(state.fallback_answer_url_socket_timeout)
+          http_method: state.fallback_answer_url_http_method
         },
         event_url: {
           address: state.event_url_address,
-          http_method: state.event_url_http_method,
-          // connection_timeout: parseInt(state.event_url_connection_timeout),
-          // socket_timeout: parseInt(state.event_url_socket_timeout)
+          http_method: state.event_url_http_method
         }
       }
     };
@@ -425,6 +440,5 @@ export class ApplicationViewDataProvider extends BaseTreeViewDataProvider {
     } else {
       return;
     }
-
   }
 }

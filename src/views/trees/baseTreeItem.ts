@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { getIconPath } from '../../utils';
 
 export class BaseTreeItem extends vscode.TreeItem {
   parent: BaseTreeItem | undefined;
@@ -13,7 +14,7 @@ export class BaseTreeItem extends vscode.TreeItem {
     super(label, collapsibleState);
     this.command = command;
     this.contextValue = contextValue;
-    this.iconPath = new vscode.ThemeIcon(icon);
+    this.iconPath = getIconPath(icon);
   }
 
   makeCollapsible() {

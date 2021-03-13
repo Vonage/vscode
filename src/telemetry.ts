@@ -171,9 +171,9 @@ export class GoogleAnalyticsTelemetry implements Telemetry {
     const enableTelemetry = vscode.workspace
       .getConfiguration('telemetry')
       .get('enableTelemetry', false);
-    const stripeEnableTelemetry = vscode.workspace
+    const vonageEnableTelemetry = vscode.workspace
       .getConfiguration('vonage.telemetry')
       .get('enabled', false);
-    return enableTelemetry && stripeEnableTelemetry;
+    return enableTelemetry && vonageEnableTelemetry;
   }
 }

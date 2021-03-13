@@ -1,4 +1,4 @@
-import { Event, EventEmitter, TreeDataProvider, TreeItem } from 'vscode';
+import { Event, EventEmitter, TreeDataProvider, TreeItem, TreeItemCollapsibleState } from 'vscode';
 import { BaseTreeItem } from './baseTreeItem';
 
 export class BaseTreeViewDataProvider implements TreeDataProvider<TreeItem> {
