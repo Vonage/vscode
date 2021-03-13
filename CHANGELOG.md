@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+---
+
+## [1.0.0] - 2021-03-13
+
 ### Added
 
 - Applications now display as tree views that can be expanded to see assigned numbers
@@ -26,8 +30,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CI process now confirms all tests pass on Linux, macOS, and Windows
 - CD process now generates versions on creation of releases in GitHub
 - Adding unit tests for existing extension capabilities
-
----
 
 ## [0.0.10] - 2021-03-08
 
@@ -55,6 +57,7 @@ from using them if they weren't authenticated
   - Quick access to Vonage API dashboard
   - Initial README, CONTRIBUTING, etc.
 
-[unreleased]: https://github.com/vonage/vscode/compare/0.0.10...HEAD
+[unreleased]: https://github.com/vonage/vscode/compare/1.0.0...HEAD
+[1.0.0]: https://github.com/vonage/vscode/compare/0.0.10...1.0.0
 [0.0.10]: https://github.com/vonage/vscode/compare/0.0.8...0.0.10
 [0.0.8]: https://github.com/vonage/vscode/compare/edc07b4...0.0.8
