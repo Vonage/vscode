@@ -6,7 +6,7 @@ export class ApplicationTreeItem extends BaseTreeItem {
 
   constructor(
     public application: any) {
-    super(application.name, TreeItemCollapsibleState.None, 'server-process', undefined, 'application');
+    super(application.name, TreeItemCollapsibleState.Collapsed, 'app-line', undefined, 'application');
     this.setContextValue();
     this.setDescription();
     this.setToolTip();

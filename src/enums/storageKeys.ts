@@ -17,5 +17,13 @@ export enum StorageKeys {
   /**
    * Whether to hide the account balance by default
    */
-  hideAccountBalance = 'hideAccountBalance'
+  hideAccountBalance = 'hideAccountBalance',
+  /**
+   * Last country selected
+   */
+  lastCountrySelected = 'lastCountrySelected',
+  /**
+   * Display numbers that are assigned to applications
+   */
+  displayAssignedOnly = 'displayAssignedOnly'
 }

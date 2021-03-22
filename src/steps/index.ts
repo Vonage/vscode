@@ -1,3 +1,4 @@
+export * from './assignNumberFlow';
 export * from './createApplicationFlow';
 export * from './loginFlow';
 export * from './messageCapabilityFlow';

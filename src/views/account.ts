@@ -24,7 +24,7 @@ export class AccountViewDataProvider extends BaseTreeViewDataProvider {
     const accountTreeItem = new BaseTreeItem(
       `Balance: ${balance}`,
       TreeItemCollapsibleState.None,
-      'law',
+      'wallet-line',
       {
         command: 'vonage.account.toggleBalanceView',
         title: '',
