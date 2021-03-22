@@ -111,7 +111,7 @@ export class NumbersViewDataProvider extends BaseTreeViewDataProvider {
   }
 
   async copyNumber(node: NumberTreeItem): Promise<void> {
-    vscode.env.clipboard.writeText(`+${node.number.msisdn}`);
-    vscode.window.showInformationMessage(`'+${node.number.msisdn}' copied to clipboard`);
+    vscode.env.clipboard.writeText(`${node.number.msisdn}`);
+    vscode.window.showInformationMessage(`'${node.number.msisdn}' copied to clipboard`);
   }
 }
