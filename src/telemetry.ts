@@ -108,7 +108,7 @@ export class GoogleAnalyticsTelemetry implements Telemetry {
       return;
     }
 
-    this.client = ua('G-K22ZDJ2C5Y');
+    this.client = ua('UA-190207805-1');
 
     const extensionInfo = getExtensionInfo();
 
