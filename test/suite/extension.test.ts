@@ -1,7 +1,7 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
 
-suite('Extension Test Suite', () => {
+suite('Extension', () => {
 	test('Should start extension vonage.vscode', async () => {
 		const started = vscode.extensions.getExtension('vonage.vscode');
 		assert.notStrictEqual(started, undefined);

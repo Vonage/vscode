@@ -14,10 +14,12 @@ export class AccountCommands {
   }
 
   refresh = async (): Promise<void> => {
+    this.telemetry.sendEvent('Account', 'account.refresh');
     this.accountViewDataProvider.refresh();
   }
 
   toggleBalanceView = (): void => {
+    this.telemetry.sendEvent('Account', 'account.toggleBalance');
     this.accountViewDataProvider.toggleBalanceView();
   }
 }

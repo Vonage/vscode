@@ -18,7 +18,7 @@ export class AuthCommands {
    * in order to use extension.
    */
   login = async (): Promise<void> => {
-    this.telemetry.sendEvent('login');
+    this.telemetry.sendEvent('Auth', 'login');
 
     const state = await LoginFlow.collectInputs();
 
@@ -32,7 +32,7 @@ export class AuthCommands {
   }
 
   logout = async (): Promise<void> => {
-    this.telemetry.sendEvent('logout');
+    this.telemetry.sendEvent('Auth', 'logout');
     await Auth.logout();
   }
 }

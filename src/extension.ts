@@ -53,7 +53,7 @@ export class Extension {
      * and Vonage specific telemetry settings are allowed.
      */
     const telemetry = getTelemetry();
-    telemetry.sendEvent('activate');
+    telemetry.sendEvent('Activation', 'activate');
 
 
     /**
@@ -155,7 +155,6 @@ export async function deactivate() {
  */
 function getTelemetry() {
   if (process.env.EXTENSION_MODE === 'development' || vscode.env.sessionId === 'someValue.sessionId') {
-    console.log('Extension is running in development mode. Using local telemetry instance');
     return new LocalTelemetry();
   } else {
     return GoogleAnalyticsTelemetry.getInstance();
