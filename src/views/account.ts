@@ -39,10 +39,10 @@ export class AccountViewDataProvider extends BaseTreeViewDataProvider {
     ];
   }
 
-  toggleBalanceView(): void {
+  async toggleBalanceView(): Promise<void>  {
     const currentHideState = this.storage.get(StorageKeys.hideAccountBalance) as boolean || false;
 
-    this.storage.update(StorageKeys.hideAccountBalance, !currentHideState);
+    await this.storage.update(StorageKeys.hideAccountBalance, !currentHideState);
     this.refresh();
   }
 }

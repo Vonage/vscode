@@ -1,4 +1,3 @@
-import vscode from 'vscode';
 import Sinon from 'sinon';
 import chai from 'chai';
 import moment from 'moment';

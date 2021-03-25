@@ -18,8 +18,8 @@ export class AccountCommands {
     this.accountViewDataProvider.refresh();
   }
 
-  toggleBalanceView = (): void => {
+  toggleBalanceView = async (): Promise<void> => {
     this.telemetry.sendEvent('Account', 'account.toggleBalance');
-    this.accountViewDataProvider.toggleBalanceView();
+    await this.accountViewDataProvider.toggleBalanceView();
   }
 }

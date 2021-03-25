@@ -10,7 +10,7 @@ async function main() {
 		// The path to the extension test workspace
 		const testWorkspace = path.resolve(
 			__dirname,
-			extensionDevelopmentPath + '/test/workspace/',
+			extensionDevelopmentPath + '/tests/workspace/',
 		);
 
 		const launchArgs = [
