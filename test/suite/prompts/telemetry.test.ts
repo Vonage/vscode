@@ -26,7 +26,7 @@ suite('Prompt:Telemetry', function() {
   });
 
   test(`Should not show if shown before`, function () {
-    storage.update(StorageKeys.doNotShowSurveyPromptAgain, true);
+    storage.update(StorageKeys.doNotShowTelemetryPromptAgain, true);
 
     telemetryPrompt.activate();
 

@@ -34,7 +34,7 @@ suite('Survey Prompt Tests', function () {
 
     const shouldShow = surveyPrompt.shouldShowBanner();
     shouldShow.should.eq(false);
-   // getStorageStub.called.should.be.true;
+    getStorageStub.called.should.be.true;
   });
 
   test(`Should not show if not in 20% sampling`, function () {
