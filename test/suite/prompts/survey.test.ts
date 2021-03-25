@@ -1,78 +1,65 @@
-// // tslint:disable: no-unused-expression
-// import * as vscode from 'vscode';
-// // import * as sinon from 'sinon';
-// // import * as chai from 'chai';
-// import moment from 'moment';
-// // import { fakeMemento, fakeWorkspaceConfiguration } from '../../../../.github/fakes';
-// import { StorageKeys } from '../../../enums';
-// import { SurveyPrompt } from '../../../prompts';
+import vscode from 'vscode';
+import Sinon from 'sinon';
+import chai from 'chai';
+import moment from 'moment';
+import { SurveyPrompt } from '../../../src/prompts';
+import { StorageKeys } from '../../../src/enums';
+import { TestMemento } from '../../mocks';
 
-// // chai.should();
+chai.should();
 
-// suite('Survey Prompt Tests', function () {
-//   // let fakeState: vscode.Memento;
-//   // let fakeWorkspaceConfig: vscode.WorkspaceConfiguration;
-//   // let fakeSurveyPrompt: SurveyPrompt;
-//   // let getConfigurationStub: sinon.SinonStub<[(string | undefined)?, (vscode.Uri | null | undefined)?], vscode.WorkspaceConfiguration>;
+suite('Survey Prompt Tests', function () {
 
-//   // suiteSetup(function () {
-//   //   fakeState = fakeMemento;
-//   //   fakeWorkspaceConfig = fakeWorkspaceConfiguration;
-//   // });
+  const storage = new TestMemento();
+  const getStorageStub = Sinon.stub(storage, 'get');
+  const surveyPrompt = new SurveyPrompt(storage);
 
-//   // suiteTeardown(function () {
-//   //   getConfigurationStub.restore();
-//   // });
+  this.beforeEach(function() {
+    storage.storage = new Map();
+    getStorageStub.resetHistory();
+    storage.update(StorageKeys.doNotShowSurveyPromptAgain, false);
+  });
 
-//   // setup(async function () {
-//   //   getConfigurationStub.resetHistory();
-//   //   fakeState.update(StorageKeys.doNotShowSurveyPromptAgain, false);
-//   //   fakeState.update(StorageKeys.lastSurveyDate, undefined);
-//   //   fakeSurveyPrompt = new SurveyPrompt(fakeState);
-//   // });
+  test(`Should not show if user selected to never show again`, function () {
+    storage.update(StorageKeys.doNotShowSurveyPromptAgain, true);
 
-//   // test(`Should not show if user selected to never show again`, async function () {
-//   //   fakeState.update(StorageKeys.doNotShowSurveyPromptAgain, true);
+    const shouldShow = surveyPrompt.shouldShowBanner();
 
-//   //   const getStorageStub = sinon.stub(fakeState, 'get');
+    shouldShow.should.eq(false);
+  });
 
-//   //   const shouldShow = fakeSurveyPrompt.shouldShowBanner();
-//   //   sinon.assert.match(shouldShow, false);
-//   //   getStorageStub.notCalled.should.be.true;
-//   // });
+  test(`Should not show if user has seen message within past 12 weeks`, function () {
+    const currentEpoch = moment().valueOf();
+    storage.update(StorageKeys.lastSurveyDate, currentEpoch);
 
-//   // test(`Should not show if user has seen message within past 12 weeks`, async function () {
-//   //   const currentEpoch = moment().valueOf();
-//   //   this.storage.update(StorageKeys.lastSurveyDate, currentEpoch);
+    const shouldShow = surveyPrompt.shouldShowBanner();
+    shouldShow.should.eq(false);
+   // getStorageStub.called.should.be.true;
+  });
 
-//   //   const getStorageStub = sinon.stub(fakeState, 'get');
+  test(`Should not show if not in 20% sampling`, function () {
+    const getRandomIntStub = Sinon
+      .stub(surveyPrompt, 'getRandomInt')
+      .callsFake((max: number): number => {
+        return 80;
+      });
 
-//   //   const shouldShow = fakeSurveyPrompt.shouldShowBanner();
-//   //   sinon.assert.match(shouldShow, false);
-//   //   getStorageStub.called.should.be.true;
-//   // });
+    const shouldShow = surveyPrompt.shouldShowBanner();
+    shouldShow.should.eq(false);
+    getRandomIntStub.calledOnce.should.be.true;
+    getRandomIntStub.restore();
+  });
 
-//   // test(`Should not show if not in 20% sampling`, async function () {
-//   //   const getRandomIntStub = sinon
-//   //     .stub(fakeSurveyPrompt, 'getRandomInt')
-//   //     .callsFake((max: number): number => {
-//   //       return 80;
-//   //     });
+  test(`Should show if in 20% sampling`, function () {
+    const getRandomIntStub = Sinon
+      .stub(surveyPrompt, 'getRandomInt')
+      .callsFake((max: number): number => {
+        return 10;
+      });
 
-//   //   const shouldShow = fakeSurveyPrompt.shouldShowBanner();
-//   //   sinon.assert.match(shouldShow, false);
-//   //   getRandomIntStub.calledOnce.should.be.true;
-//   // });
-
-//   // test(`Should show if in 20% sampling`, async function () {
-//   //   const getRandomIntStub = sinon
-//   //     .stub(fakeSurveyPrompt, 'getRandomInt')
-//   //     .callsFake((max: number): number => {
-//   //       return 10;
-//   //     });
-
-//   //   const shouldShow = fakeSurveyPrompt.shouldShowBanner();
-//   //   sinon.assert.match(shouldShow, true);
-//   //   getRandomIntStub.calledOnce.should.be.true;
-//   // });
-// });
+    const shouldShow = surveyPrompt.shouldShowBanner();
+    shouldShow.should.eq(true);
+    getRandomIntStub.calledOnce.should.be.true;
+    getRandomIntStub.restore();
+  });
+});

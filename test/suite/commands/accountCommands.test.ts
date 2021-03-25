@@ -3,11 +3,11 @@ import Sinon from 'sinon';
 import { AccountCommands } from '../../../src/commands';
 import { LocalTelemetry } from '../../../src/telemetry';
 import { AccountViewDataProvider } from '../../../src/views';
-import { mocks } from '../../mocks/vscode';
+import { mocks } from '../../mocks';
 
 chai.should();
 
-suite('Commands:Account', () => {
+suite('Commands:Account', function() {
 
   const telemetry = new LocalTelemetry();
   const telemetrySendEvent = Sinon.stub(telemetry, 'sendEvent');
@@ -18,8 +18,23 @@ suite('Commands:Account', () => {
     telemetry,
     viewProvider);
 
-  test('Commands are registered and fire appropriately', async () => {
+  this.beforeEach(() => {
+    telemetrySendEvent.resetHistory();
+  });
+
+  test('refresh calls appropriate view', async () => {
+    const stub = Sinon.stub(viewProvider, 'refresh');
+
     accountCommands.refresh();
     telemetrySendEvent.calledOnce.should.eq(true);
+    stub.calledOnce.should.eq(true);
+  });
+
+  test('toggleBalanceView calls appropriate view', async () => {
+    const stub = Sinon.stub(viewProvider, 'toggleBalanceView');
+
+    accountCommands.toggleBalanceView();
+    telemetrySendEvent.calledOnce.should.eq(true);
+    stub.calledOnce.should.eq(true);
   });
 });

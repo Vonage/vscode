@@ -19,6 +19,7 @@ export class HelpCommands {
   }
 
   refresh = async () => {
+    this.telemetry.sendEvent('Help', 'help.refresh');
     this.vonageHelpViewDataProvider.refresh();
   }
 

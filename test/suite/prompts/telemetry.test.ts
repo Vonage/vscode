@@ -1,49 +1,35 @@
-// import vscode from 'vscode';
-// import sinon from 'sinon';
-// import chai from 'chai';
-// import { TelemetryPrompt } from '../../../src/prompts';
-// import { StorageKeys } from '../../../src/enums';
+import vscode from 'vscode';
+import Sinon from 'sinon';
+import chai from 'chai';
+import { TelemetryPrompt } from '../../../src/prompts';
+import { StorageKeys } from '../../../src/enums';
+import { TestMemento } from '../../mocks';
 
-// chai.should();
+chai.should();
 
-// suite('Telemetry Prompt Tests', () => {
+suite('Prompt:Telemetry', function() {
 
-//   let fakeState: vscode.Memento;
-//   let fakeWorkspaceConfig: vscode.WorkspaceConfiguration;
-//   let fakeTelemetryPrompt: TelemetryPrompt;
-//   let getConfigurationStub: sinon.SinonStub<[(string | undefined)?, (vscode.Uri | null | undefined)?], vscode.WorkspaceConfiguration>;
-//   let windowShowInformationMessageStub: sinon.SinonStub;
+  const storage = new TestMemento();
+  const telemetryPrompt = new TelemetryPrompt(storage);
+  const windowShowInformationMessageStub = Sinon.stub(vscode.window, 'showInformationMessage');
 
-//   suiteSetup(function () {
-//     fakeState = fakeMemento;
-//     fakeWorkspaceConfig = fakeWorkspaceConfiguration;
-//     windowShowInformationMessageStub = sinon.stub(vscode.window, 'showInformationMessage');
-//   });
+  this.beforeEach(function() {
+    storage.storage = new Map();
+    storage.update(StorageKeys.doNotShowTelemetryPromptAgain, false);
+    windowShowInformationMessageStub.resetHistory();
+  });
 
-//   suiteTeardown(function () {
-//     windowShowInformationMessageStub.restore();
-//   });
+  test(`Should show if never shown`, function () {
+    telemetryPrompt.activate();
 
-//   setup(async function () {
-//     windowShowInformationMessageStub.resetHistory();
-//     fakeState.update(StorageKeys.doNotShowTelemetryPromptAgain, false);
-//     fakeTelemetryPrompt = new TelemetryPrompt(fakeState);
-//   });
+    windowShowInformationMessageStub.calledOnce.should.be.true;
+  });
 
-//   test(`Should show if never shown`, async function () {
-//     fakeTelemetryPrompt.activate();
-//     windowShowInformationMessageStub.calledOnce.should.be.true;
-//   });
+  test(`Should not show if shown before`, function () {
+    storage.update(StorageKeys.doNotShowSurveyPromptAgain, true);
 
-//   test(`Should not show if shown before`, async function () {
+    telemetryPrompt.activate();
 
-//     console.log(windowShowInformationMessageStub.callCount);
-//         fakeState.update(StorageKeys.doNotShowSurveyPromptAgain, true);
-
-//     fakeTelemetryPrompt.activate();
-
-
-//     windowShowInformationMessageStub.called.should.be.false;
-//   });
-
-// });
+    windowShowInformationMessageStub.called.should.be.false;
+  });
+});

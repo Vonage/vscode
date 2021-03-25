@@ -19,7 +19,6 @@ import {
 } from './commands';
 import { Auth } from './auth';
 import { Credentials } from './models';
-import { StorageKeys } from './enums';
 
 let activeExtension: Extension;
 let _context: vscode.ExtensionContext;
