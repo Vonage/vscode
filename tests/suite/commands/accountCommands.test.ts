@@ -18,8 +18,12 @@ suite('Commands:Account', function() {
     telemetry,
     viewProvider);
 
-  this.beforeEach(() => {
+  this.beforeEach(function() {
     telemetrySendEvent.resetHistory();
+  });
+
+  this.afterAll(function() {
+    telemetrySendEvent.restore();
   });
 
   test('refresh calls appropriate view', async () => {
@@ -28,6 +32,7 @@ suite('Commands:Account', function() {
     accountCommands.refresh();
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('toggleBalanceView calls appropriate view', async () => {
@@ -36,5 +41,6 @@ suite('Commands:Account', function() {
     accountCommands.toggleBalanceView();
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 });

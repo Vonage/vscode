@@ -19,6 +19,10 @@ suite('Prompt:Telemetry', function() {
     windowShowInformationMessageStub.resetHistory();
   });
 
+  this.afterAll(function() {
+    windowShowInformationMessageStub.restore();
+  });
+
   test(`Should show if never shown`, function () {
     telemetryPrompt.activate();
 

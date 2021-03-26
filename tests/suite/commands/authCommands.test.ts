@@ -21,6 +21,10 @@ suite('Commands:Auth', function() {
     telemetrySendEvent.resetHistory();
   });
 
+  this.afterAll(() => {
+    telemetrySendEvent.restore();
+  });
+
   test('login renders correct user flow', async () => {
     const loginFlowStub = Sinon.stub(LoginFlow, 'collectInputs');
 
@@ -28,6 +32,7 @@ suite('Commands:Auth', function() {
 
     telemetrySendEvent.calledOnce.should.eq(true);
     loginFlowStub.calledOnce.should.eq(true);
+    loginFlowStub.restore();
   });
 
   test('logout calls auth logout', async () => {
@@ -37,6 +42,6 @@ suite('Commands:Auth', function() {
 
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
-
 });

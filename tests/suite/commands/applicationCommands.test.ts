@@ -24,12 +24,17 @@ suite('Commands:Applications', function() {
     telemetrySendEvent.resetHistory();
   });
 
+  this.afterAll(() => {
+    telemetrySendEvent.restore();
+  });
+
   test('refreshAppsList refreshes appropriate view', async () => {
     const stub = Sinon.stub(viewProvider, 'refresh');
 
     applicationsCommands.refreshAppsList();
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('addApp calls appropriate view', async () => {
@@ -38,6 +43,7 @@ suite('Commands:Applications', function() {
     applicationsCommands.addApp();
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('updateApp calls appropriate view', async () => {
@@ -46,6 +52,7 @@ suite('Commands:Applications', function() {
     applicationsCommands.updateApp(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('deleteApp calls appropriate view', async () => {
@@ -54,6 +61,7 @@ suite('Commands:Applications', function() {
     applicationsCommands.deleteApp(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('linkApp calls appropriate view', async () => {
@@ -62,6 +70,7 @@ suite('Commands:Applications', function() {
     applicationsCommands.linkApp(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('voiceAdd calls appropriate view', async () => {
@@ -70,6 +79,7 @@ suite('Commands:Applications', function() {
     applicationsCommands.voiceAdd(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('voiceUpdate calls appropriate view', async () => {
@@ -78,6 +88,7 @@ suite('Commands:Applications', function() {
     applicationsCommands.voiceUpdate(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('voiceDelete calls appropriate view', async () => {
@@ -86,6 +97,7 @@ suite('Commands:Applications', function() {
     applicationsCommands.voiceDelete(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('rtcAdd calls appropriate view', async () => {
@@ -94,6 +106,7 @@ suite('Commands:Applications', function() {
     applicationsCommands.rtcAdd(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('rtcUpdate calls appropriate view', async () => {
@@ -102,6 +115,7 @@ suite('Commands:Applications', function() {
     applicationsCommands.rtcUpdate(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('rtcDelete calls appropriate view', async () => {
@@ -110,6 +124,7 @@ suite('Commands:Applications', function() {
     applicationsCommands.rtcDelete(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('messagesAdd calls appropriate view', async () => {
@@ -118,6 +133,7 @@ suite('Commands:Applications', function() {
     applicationsCommands.messagesAdd(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('messagesUpdate calls appropriate view', async () => {
@@ -126,6 +142,7 @@ suite('Commands:Applications', function() {
     applicationsCommands.messagesUpdate(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('messagesDelete calls appropriate view', async () => {
@@ -134,6 +151,7 @@ suite('Commands:Applications', function() {
     applicationsCommands.messagesDelete(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('vbcAdd calls appropriate view', async () => {
@@ -142,6 +160,7 @@ suite('Commands:Applications', function() {
     applicationsCommands.vbcAdd(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('vbcDelete calls appropriate view', async () => {
@@ -150,5 +169,6 @@ suite('Commands:Applications', function() {
     applicationsCommands.vbcDelete(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 });

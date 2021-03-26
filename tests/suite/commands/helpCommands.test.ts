@@ -26,12 +26,18 @@ suite('Commands:Help', function() {
     openExternalStub.resetHistory();
   });
 
+  this.afterAll(() => {
+    telemetrySendEvent.restore();
+    openExternalStub.restore();
+  });
+
   test('refresh refreshes appropriate view', async () => {
     const stub = Sinon.stub(viewProvider, 'refresh');
 
     helpCommands.refresh();
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('openDocs opens external url', async () => {
@@ -46,6 +52,7 @@ suite('Commands:Help', function() {
     helpCommands.openReportIssue();
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('openSurvey opens external url', async () => {

@@ -23,12 +23,17 @@ suite('Commands:Numbers', function() {
     telemetrySendEvent.resetHistory();
   });
 
+  this.afterAll(() => {
+    telemetrySendEvent.restore();
+  });
+
   test('refreshNumbersList refreshes appropriate view', async () => {
     const stub = Sinon.stub(viewProvider, 'refresh');
 
     numbersCommands.refreshNumbersList();
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('buyNumber calls appropriate view', async () => {
@@ -37,6 +42,7 @@ suite('Commands:Numbers', function() {
     numbersCommands.buyNumber();
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('cancelNumber calls appropriate view', async () => {
@@ -45,6 +51,7 @@ suite('Commands:Numbers', function() {
     numbersCommands.cancelNumber(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('assignNumber calls appropriate view', async () => {
@@ -53,6 +60,7 @@ suite('Commands:Numbers', function() {
     numbersCommands.assignNumber(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('unassignNumber calls appropriate view', async () => {
@@ -61,6 +69,7 @@ suite('Commands:Numbers', function() {
     numbersCommands.unassignNumber(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 
   test('copyNumber calls appropriate view', async () => {
@@ -69,5 +78,6 @@ suite('Commands:Numbers', function() {
     numbersCommands.copyNumber(node);
     telemetrySendEvent.calledOnce.should.eq(true);
     stub.calledOnce.should.eq(true);
+    stub.restore();
   });
 });

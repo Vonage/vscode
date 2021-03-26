@@ -19,6 +19,10 @@ suite('Survey Prompt Tests', function () {
     storage.update(StorageKeys.doNotShowSurveyPromptAgain, false);
   });
 
+  this.afterAll(function() {
+    getStorageStub.restore();
+  });
+
   test(`Should not show if user selected to never show again`, function () {
     storage.update(StorageKeys.doNotShowSurveyPromptAgain, true);
 
