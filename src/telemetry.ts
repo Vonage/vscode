@@ -5,7 +5,7 @@ import publicIp from 'public-ip';
 import { getExtensionInfo } from './utils';
 
 export interface Telemetry {
-  sendEvent(eventName: string, eventValue?: any): void;
+  sendEvent(eventCategory: string, eventName: string, eventValue?: any): void;
   isTelemetryEnabled(): boolean;
 }
 
@@ -15,10 +15,11 @@ export interface Telemetry {
 export class NoOpTelemetry implements Telemetry {
   /**
    * NoOp implementation of sending a telemetry event
+   * @param eventCategory Area of the extension the event lives
    * @param eventName Name of the event that occurred
    * @param eventValue Optional value of the event
    */
-  sendEvent(eventName: string, eventValue?: any) {
+  sendEvent(eventCategory: string, eventName: string, eventValue?: any) {
     return;
   }
 
@@ -38,11 +39,12 @@ export class LocalTelemetry implements Telemetry {
 
   /**
    * Records telemetry to the debug console
+   * @param eventCategory Area of the extension the event lives
    * @param eventName Name of the event that occurred
    * @param eventValue Optional value of the event
    */
-  sendEvent(eventName: string, eventValue?: any) {
-    console.log('[TelemetryEvent] %s: %s', eventName, eventValue);
+  sendEvent(eventCategory: string, eventName: string, eventValue?: any) {
+    console.log(`[TelemetryEvent] ${eventCategory}: ${eventName}: ${eventValue}`);
   }
 
   /**
@@ -59,7 +61,7 @@ export class LocalTelemetry implements Telemetry {
 export class GoogleAnalyticsTelemetry implements Telemetry {
   private static INSTANCE: GoogleAnalyticsTelemetry;
 
-  client: any;
+  visitor: any;
   userId: string;
   ip: string;
   private _isTelemetryEnabled: boolean;
@@ -104,11 +106,11 @@ export class GoogleAnalyticsTelemetry implements Telemetry {
       return;
     }
 
-    if (this.client) {
+    if (this.visitor) {
       return;
     }
 
-    this.client = ua('UA-190207805-1');
+    this.visitor = ua('UA-190207805-1');
 
     const extensionInfo = getExtensionInfo();
 
@@ -120,24 +122,24 @@ export class GoogleAnalyticsTelemetry implements Telemetry {
     /**
      * User custom dimensions to store user metadata
      */
-    this.client.set('cd1', vscode.env.sessionId);
-    this.client.set('cd2', vscode.env.language);
-    this.client.set('cd3', vscode.version);
-    this.client.set('cd4', osName());
-    this.client.set('cd5', extensionInfo.version);
+    this.visitor.set('applicationVersion ', vscode.version);
+    this.visitor.set('userLanguage', vscode.env.language);
+    this.visitor.set('cd1', osName());
+    this.visitor.set('cd2', extensionInfo.version);
 
     /**
      * Set userID
      */
-    this.client.set('uid', this.userId);
+    this.visitor.set('uid', this.userId);
   }
 
   /**
    * Records event to telemetry 
+   * @param eventCategory Area of the extension the event lives
    * @param eventName Name of the event that occurred 
    * @param eventValue Optional value of the event
    */
-  sendEvent(eventName: string, eventValue?: any): void {
+  sendEvent(eventCategory: string, eventName: string, eventValue?: any): void {
     if (!this.isTelemetryEnabled) {
       return;
     }
@@ -150,7 +152,7 @@ export class GoogleAnalyticsTelemetry implements Telemetry {
       uid: this.userId,
     };
 
-    this.client.event(requestParams).send();
+    this.visitor.event(requestParams).send();
   }
 
   /**

@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.2] - 2021-03-31
+
+### Updated
+
+- Added additional unit tests
+- Improved gathering of telemetry
+
 ## [1.0.0] - 2021-03-13
 
 ### Added
@@ -57,7 +64,8 @@ from using them if they weren't authenticated
   - Quick access to Vonage API dashboard
   - Initial README, CONTRIBUTING, etc.
 
-[unreleased]: https://github.com/vonage/vscode/compare/1.0.0...HEAD
+[unreleased]: https://github.com/vonage/vscode/compare/1.0.2...HEAD
+[1.0.2]: https://github.com/vonage/vscode/compare/1.0.0...1.0.2
 [1.0.0]: https://github.com/vonage/vscode/compare/0.0.10...1.0.0
 [0.0.10]: https://github.com/vonage/vscode/compare/0.0.8...0.0.10
 [0.0.8]: https://github.com/vonage/vscode/compare/edc07b4...0.0.8

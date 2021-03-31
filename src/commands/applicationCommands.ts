@@ -34,31 +34,31 @@ export class ApplicationCommands {
 
   /** Application commands */
   refreshAppsList = () => {
-    this.telemetry.sendEvent('app.refreshAppsList');
+    this.telemetry.sendEvent('Applications', 'app.refreshAppsList');
     this.vonageApplicationViewDataProvider.refresh();
   };
 
   addApp = () => {
-    this.telemetry.sendEvent('app.addApp');
+    this.telemetry.sendEvent('Applications', 'app.addApp');
     this.vonageApplicationViewDataProvider.createApplication();
   }
 
   updateApp = (node?: ApplicationTreeItem) => {
-    this.telemetry.sendEvent('app.updateApp');
+    this.telemetry.sendEvent('Applications', 'app.updateApp');
     if (node) {
       this.vonageApplicationViewDataProvider.updateApplication(node);
     }
   }
 
   deleteApp = (node?: ApplicationTreeItem) => {
-    this.telemetry.sendEvent('app.deleteApp');
+    this.telemetry.sendEvent('Applications', 'app.deleteApp');
     if (node) {
       this.vonageApplicationViewDataProvider.deleteApplication(node);
     }
   }
 
   linkApp = (node?: ApplicationTreeItem) => {
-    this.telemetry.sendEvent('app.link');
+    this.telemetry.sendEvent('Applications', 'app.link');
     if (node) {
       this.vonageApplicationViewDataProvider.linkApplication(node);
     }
@@ -67,21 +67,21 @@ export class ApplicationCommands {
   /** Voice commands */
 
   voiceAdd = (node?: ApplicationTreeItem) => {
-    this.telemetry.sendEvent('app.voice.add');
+    this.telemetry.sendEvent('Applications', 'app.voice.add');
     if (node) {
       this.vonageApplicationViewDataProvider.addVoice(node);
     }
   }
 
   voiceUpdate = (node?: ApplicationTreeItem) => {
-    this.telemetry.sendEvent('app.voice.update');
+    this.telemetry.sendEvent('Applications', 'app.voice.update');
     if (node) {
       this.vonageApplicationViewDataProvider.updateVoice(node);
     }
   }
 
   voiceDelete = (node?: ApplicationTreeItem) => {
-    this.telemetry.sendEvent('app.voice.delete');
+    this.telemetry.sendEvent('Applications', 'app.voice.delete');
     if (node) {
       this.vonageApplicationViewDataProvider.deleteVoice(node);
     }
@@ -90,21 +90,21 @@ export class ApplicationCommands {
   /** RTC commands */
 
   rtcAdd = (node?: ApplicationTreeItem) => {
-    this.telemetry.sendEvent('app.rtc.add');
+    this.telemetry.sendEvent('Applications', 'app.rtc.add');
     if (node) {
       this.vonageApplicationViewDataProvider.addRTC(node);
     }
   }
 
   rtcUpdate = (node?: ApplicationTreeItem) => {
-    this.telemetry.sendEvent('app.rtc.update');
+    this.telemetry.sendEvent('Applications', 'app.rtc.update');
     if (node) {
       this.vonageApplicationViewDataProvider.updateRTC(node);
     }
   }
 
   rtcDelete = (node?: ApplicationTreeItem) => {
-    this.telemetry.sendEvent('app.rtc.delete');
+    this.telemetry.sendEvent('Applications', 'app.rtc.delete');
     if (node) {
       this.vonageApplicationViewDataProvider.deleteRTC(node);
     }
@@ -113,21 +113,21 @@ export class ApplicationCommands {
   /** Messages commands */
 
   messagesAdd = (node?: ApplicationTreeItem) => {
-    this.telemetry.sendEvent('app.messages.add');
+    this.telemetry.sendEvent('Applications', 'app.messages.add');
     if (node) {
       this.vonageApplicationViewDataProvider.addMessages(node);
     }
   }
 
   messagesUpdate = (node?: ApplicationTreeItem) => {
-    this.telemetry.sendEvent('app.messages.update');
+    this.telemetry.sendEvent('Applications', 'app.messages.update');
     if (node) {
       this.vonageApplicationViewDataProvider.updateMessages(node);
     }
   }
 
   messagesDelete = (node?: ApplicationTreeItem) => {
-    this.telemetry.sendEvent('app.messages.delete');
+    this.telemetry.sendEvent('Applications', 'app.messages.delete');
     if (node) {
       this.vonageApplicationViewDataProvider.deleteMessages(node);
     }
@@ -136,14 +136,14 @@ export class ApplicationCommands {
   /** VBC commands */
 
   vbcAdd = (node?: ApplicationTreeItem) => {
-    this.telemetry.sendEvent('app.vbc.add');
+    this.telemetry.sendEvent('Applications', 'app.vbc.add');
     if (node) {
       this.vonageApplicationViewDataProvider.addVBC(node);
     }
   }
 
   vbcDelete = (node?: ApplicationTreeItem) => {
-    this.telemetry.sendEvent('app.vbc.delete');
+    this.telemetry.sendEvent('Applications', 'app.vbc.delete');
     if (node) {
       this.vonageApplicationViewDataProvider.deleteVBC(node);
     }

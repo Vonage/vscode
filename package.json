@@ -1,7 +1,7 @@
 {
   "name": "vscode",
   "displayName": "Vonage",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Visual Studio Code extension for accessing the Vonage communication APIs.",
   "main": "./dist/extension",
   "repository": {
@@ -494,7 +494,7 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile",
     "webpack": "webpack --mode production",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/tests/runTest.js"
   },
   "dependencies": {
     "@vonage/server-sdk": "^2.10.7",
@@ -526,7 +526,6 @@
     "glob": "^7.1.4",
     "mocha": "^8.2.1",
     "sinon": "^9.2.1",
-    "source-map-support": "^0.5.12",
     "ts-loader": "^8.0.14",
     "typescript": "^4.2.2",
     "vscode-codicons": "0.0.14",

@@ -7,11 +7,8 @@ import { StorageKeys } from '../enums';
  * form of a survey on the learn.vonage.com site
  */
 export class SurveyPrompt {
-  private storage: vscode.Memento;
 
-  constructor(state: vscode.Memento) {
-    this.storage = state;
-  }
+  constructor(private storage: vscode.Memento) {}
 
   /**
    * Prompt user concerning the survey

@@ -19,6 +19,7 @@ export class HelpCommands {
   }
 
   refresh = async () => {
+    this.telemetry.sendEvent('Help', 'help.refresh');
     this.vonageHelpViewDataProvider.refresh();
   }
 
@@ -27,7 +28,7 @@ export class HelpCommands {
    * Ideally will open documentation for the extension. 
    */
   openDocs = () => {
-    this.telemetry.sendEvent('help.openDocs');
+    this.telemetry.sendEvent('Help', 'help.openDocs');
     vscode.env.openExternal(vscode.Uri.parse('https://developer.nexmo.com'));
   };
 
@@ -36,7 +37,7 @@ export class HelpCommands {
    * to provide feedback on the extension.
    */
   openReportIssue = () => {
-    this.telemetry.sendEvent('help.openReportIssue');
+    this.telemetry.sendEvent('Help', 'help.openReportIssue');
     const { name, publisher } = getExtensionInfo();
 
     vscode.commands.executeCommand('vscode.openIssueReporter', {
@@ -49,7 +50,7 @@ export class HelpCommands {
    * users to provide feedback on the extension.
    */
   openSurvey = () => {
-    this.telemetry.sendEvent('help.openSurvey');
+    this.telemetry.sendEvent('Help', 'help.openSurvey');
     const extensionInfo = getExtensionInfo();
 
     const query = querystring.stringify({
@@ -68,7 +69,7 @@ export class HelpCommands {
    * the user can learn more.
    */
   openTelemetryInfo = () => {
-    this.telemetry.sendEvent('help.openTelemetryInfo');
+    this.telemetry.sendEvent('Help', 'help.openTelemetryInfo');
     vscode.env.openExternal(
       vscode.Uri.parse('https://code.visualstudio.com/docs/getstarted/telemetry'),
     );
