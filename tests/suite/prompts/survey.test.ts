@@ -9,10 +9,11 @@ chai.should();
 
 suite('Prompt:Survey', function () {
 
-  const storage = new TestMemento();
+  let storage: TestMemento;
   let surveyPrompt: SurveyPrompt;
 
   this.beforeEach(function() {
+    storage = new TestMemento();
     storage.storage = new Map();
     surveyPrompt = new SurveyPrompt(storage);
   });
@@ -26,16 +27,12 @@ suite('Prompt:Survey', function () {
   });
 
   test(`should not show if user has seen message within past 12 weeks`, async function () {
-    const getStorageStub = Sinon.stub(storage, 'get');
-
     const currentEpoch = moment().valueOf();
     await storage.update(StorageKeys.lastSurveyDate, currentEpoch);
 
     const shouldShow = surveyPrompt.shouldShowBanner();
     shouldShow.should.eq(false);
-    getStorageStub.called.should.be.true;
 
-    getStorageStub.restore();
   });
 
   test(`should not show if not in 20% sampling`, function () {
