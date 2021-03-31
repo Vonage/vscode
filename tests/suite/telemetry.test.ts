@@ -6,7 +6,7 @@ suite('Telemetry', function () {
   this.timeout(20000);
   const telemetry = GoogleAnalyticsTelemetry.getInstance();
 
-  test('Respects overall and Vonage-specific telemetry configs', async () => {
+  test('respects overall and Vonage-specific telemetry configs', async () => {
     const workspaceFolder =
       vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders[0];
     const telemetryConfig = vscode.workspace.getConfiguration('telemetry', workspaceFolder);

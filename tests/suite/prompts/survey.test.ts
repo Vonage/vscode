@@ -7,40 +7,38 @@ import { TestMemento } from '../../mocks';
 
 chai.should();
 
-suite('Survey Prompt Tests', function () {
+suite('Prompt:Survey', function () {
 
   const storage = new TestMemento();
-  const getStorageStub = Sinon.stub(storage, 'get');
-  const surveyPrompt = new SurveyPrompt(storage);
+  let surveyPrompt: SurveyPrompt;
 
   this.beforeEach(function() {
     storage.storage = new Map();
-    getStorageStub.resetHistory();
-    storage.update(StorageKeys.doNotShowSurveyPromptAgain, false);
+    surveyPrompt = new SurveyPrompt(storage);
   });
 
-  this.afterAll(function() {
-    getStorageStub.restore();
-  });
-
-  test(`Should not show if user selected to never show again`, function () {
-    storage.update(StorageKeys.doNotShowSurveyPromptAgain, true);
+  test(`should not show if user selected to never show again`, async function () {
+    await storage.update(StorageKeys.doNotShowSurveyPromptAgain, true);
 
     const shouldShow = surveyPrompt.shouldShowBanner();
 
     shouldShow.should.eq(false);
   });
 
-  test(`Should not show if user has seen message within past 12 weeks`, function () {
+  test(`should not show if user has seen message within past 12 weeks`, async function () {
+    const getStorageStub = Sinon.stub(storage, 'get');
+
     const currentEpoch = moment().valueOf();
-    storage.update(StorageKeys.lastSurveyDate, currentEpoch);
+    await storage.update(StorageKeys.lastSurveyDate, currentEpoch);
 
     const shouldShow = surveyPrompt.shouldShowBanner();
     shouldShow.should.eq(false);
     getStorageStub.called.should.be.true;
+
+    getStorageStub.restore();
   });
 
-  test(`Should not show if not in 20% sampling`, function () {
+  test(`should not show if not in 20% sampling`, function () {
     const getRandomIntStub = Sinon
       .stub(surveyPrompt, 'getRandomInt')
       .callsFake((max: number): number => {
@@ -53,7 +51,7 @@ suite('Survey Prompt Tests', function () {
     getRandomIntStub.restore();
   });
 
-  test(`Should show if in 20% sampling`, function () {
+  test(`should show if in 20% sampling`, function () {
     const getRandomIntStub = Sinon
       .stub(surveyPrompt, 'getRandomInt')
       .callsFake((max: number): number => {

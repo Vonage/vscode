@@ -10,11 +10,12 @@ chai.should();
 suite('Prompt:Telemetry', function() {
 
   const storage = new TestMemento();
-  const telemetryPrompt = new TelemetryPrompt(storage);
+  let telemetryPrompt: TelemetryPrompt;
   const windowShowInformationMessageStub = Sinon.stub(vscode.window, 'showInformationMessage');
 
   this.beforeEach(function() {
     storage.storage = new Map();
+    telemetryPrompt = new TelemetryPrompt(storage);
     storage.update(StorageKeys.doNotShowTelemetryPromptAgain, false);
     windowShowInformationMessageStub.resetHistory();
   });
@@ -23,13 +24,13 @@ suite('Prompt:Telemetry', function() {
     windowShowInformationMessageStub.restore();
   });
 
-  test(`Should show if never shown`, function () {
+  test(`should show if never shown`, function () {
     telemetryPrompt.activate();
 
     windowShowInformationMessageStub.calledOnce.should.be.true;
   });
 
-  test(`Should not show if shown before`, function () {
+  test(`should not show if shown before`, function () {
     storage.update(StorageKeys.doNotShowTelemetryPromptAgain, true);
 
     telemetryPrompt.activate();

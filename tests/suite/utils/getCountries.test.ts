@@ -13,7 +13,7 @@ suite('Utils:getCountries', function() {
     storage.storage = new Map();
   });
 
-  test('Returns the most recently picked country selected', async () => {
+  test('returns the most recently picked country selected', async () => {
     storage.update(StorageKeys.lastCountrySelected, 'US');
     const countryList = utils.getCountries(storage);
 
@@ -23,7 +23,7 @@ suite('Utils:getCountries', function() {
     expect(selectedItem?.description).to.eq('US');
   });
 
-  test('Returns list of countries with no picked items when never used', async () => {
+  test('returns list of countries with no picked items when never used', async () => {
     const countryList = utils.getCountries(storage);
 
     expect(countryList.find(f => f.picked)).not.to.exist;

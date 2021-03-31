@@ -22,13 +22,16 @@ export class AuthCommands {
 
     const state = await LoginFlow.collectInputs();
 
-    await vscode.window.withProgress({
-      location: vscode.ProgressLocation.Notification,
-      title: `Configuring extension"...`
-    }, async () => {
-      await Auth.login(state.api_key, state.api_secret);
-    });
-
+    if (state.api_key?.length > 0 && state.api_secret?.length > 0) {
+      await vscode.window.withProgress({
+        location: vscode.ProgressLocation.Notification,
+        title: `Configuring extension"...`
+      }, async () => {
+        await Auth.login(state.api_key, state.api_secret);
+      });
+    } else {
+      vscode.window.showErrorMessage('Your Vonage API key & secret are required to use the Vonage for VS Code extension.');
+    }
   }
 
   logout = async (): Promise<void> => {

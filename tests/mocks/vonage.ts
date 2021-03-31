@@ -1,5 +1,19 @@
 
 export const vonage = {
+  loginStateValidMock: {
+    title: '',
+    step: 2,
+    totalSteps: 2,
+    api_key: 'fakeApiKey',
+    api_secret: 'fakeApiSecret'
+  },
+  loginStateInvalidMock: {
+    title: '',
+    step: 2,
+    totalSteps: 2,
+    api_key: '',
+    api_secret: 'fakeApiSecret'
+  },
   numberMock: {
     msisdn: '15555555555',
     type: 'voice',
