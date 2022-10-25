@@ -1,6 +1,9 @@
 import * as vscode from 'vscode';
 import * as keytartype from 'keytar';
 import { Credentials } from './models';
+import fs from "fs";
+import path from "path";
+import ini from "ini";
 
 declare const __webpack_require__: typeof require;
 declare const __non_webpack_require__: typeof require;
@@ -28,6 +31,42 @@ export class Auth {
       return true;
     }
     return false;
+  }
+
+  /**
+   * Try to read ~/.neru-cli and extract credentials
+   * Fails silently on error
+   */
+   public static async loginWithNeru(): Promise<void> {
+    const neruConfig = path.join(process.env.HOME!, '.neru-cli')
+    if (!fs.existsSync(neruConfig)) {
+      return;
+    }
+
+    const { credentials } = ini.parse(fs.readFileSync(neruConfig, 'utf-8'));
+
+    const validCredentials = await this.validateCredentials(credentials.api_key, credentials.api_secret);
+    if (!validCredentials) {
+      return;
+    }
+
+    const keytar = this.keytar();
+    if (!keytar) {
+      return;
+    }
+
+    await keytar.setPassword(
+      KeytarKeys.service,
+      KeytarKeys.apiKey,
+      credentials.api_key
+    );
+    await keytar.setPassword(
+      KeytarKeys.service,
+      KeytarKeys.apiSecret,
+      credentials.api_secret
+    );
+
+    authStatusEventEmitter.fire(new Credentials(credentials.api_key, credentials.api_secret));
   }
 
   public static async login(apiKey?: string, apiSecret?: string): Promise<void> {
