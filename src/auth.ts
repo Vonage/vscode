@@ -38,7 +38,7 @@ export class Auth {
    * Fails silently on error
    */
    public static async loginWithNeru(): Promise<void> {
-    const neruConfig = path.join(process.env.HOME!, '.neru-cli')
+    const neruConfig = path.join(process.env.HOME!, '.neru-cli');
     if (!fs.existsSync(neruConfig)) {
       return;
     }
