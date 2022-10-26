@@ -37,7 +37,7 @@ export class Auth {
    * Try to read ~/.neru-cli and extract credentials
    * Fails silently on error
    */
-   public static async loginWithNeru(): Promise<void> {
+   public static async loginWithNeruIfAvailable(): Promise<void> {
     const authenticated = await this.isAuthenticated();
     if (authenticated) {
       return;
