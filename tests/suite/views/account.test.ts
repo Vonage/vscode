@@ -12,7 +12,7 @@ suite('Views:Account', function () {
 
   const storage = new TestMemento();
   let viewProvider: AccountViewDataProvider;
-  const fakeGetBalance = Sinon.fake.returns(1.784);
+  const fakeGetBalance = () => Promise.resolve(1.784);
   Sinon.replace(VonageClient.account, 'getBalance', fakeGetBalance);
 
   this.beforeEach(function () {
