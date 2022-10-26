@@ -113,7 +113,7 @@ export class Extension {
       treeDataProvider: helpViewDataProvider,
       showCollapseAll: false,
     });
-  }
+  };
 
   /**
    * Deactivate the extension. Due to uninstalling the
@@ -125,7 +125,7 @@ export class Extension {
      */
     Auth.logout();
     Auth.dispose();
-  }
+  };
 }
 
 /**

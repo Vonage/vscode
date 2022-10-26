@@ -32,10 +32,10 @@ export class AuthCommands {
     } else {
       vscode.window.showErrorMessage('Your Vonage API key & secret are required to use the Vonage for VS Code extension.');
     }
-  }
+  };
 
   logout = async (): Promise<void> => {
     this.telemetry.sendEvent('Auth', 'logout');
     await Auth.logout();
-  }
+  };
 }

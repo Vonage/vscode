@@ -26,33 +26,33 @@ export class NumbersCommands {
   buyNumber = () => {
     this.telemetry.sendEvent('Numbers', 'number.buy');
     this.vonageNumbersViewDataProvider.buyNumber();
-  }
+  };
 
   cancelNumber = (node?: NumberTreeItem) => {
     this.telemetry.sendEvent('Numbers', 'number.cancel');
     if (node) {
       this.vonageNumbersViewDataProvider.cancelNumber(node);
     }
-  }
+  };
 
   assignNumber = (node?: NumberTreeItem) => {
     this.telemetry.sendEvent('Numbers', 'number.assign');
     if (node) {
       this.vonageNumbersViewDataProvider.assignNumber(node);
     }
-  }
+  };
 
   unassignNumber = (node?: NumberTreeItem) => {
     this.telemetry.sendEvent('Numbers', 'number.unassign');
     if (node) {
       this.vonageNumbersViewDataProvider.unassignNumber(node);
     }
-  }
+  };
 
   copyNumber = (node?: NumberTreeItem) => {
     this.telemetry.sendEvent('Numbers', 'number.copy');
     if (node) {
       this.vonageNumbersViewDataProvider.copyNumber(node);
     }
-  }
+  };
 }
