@@ -15,19 +15,19 @@ suite('Telemetry', function () {
       workspaceFolder,
     );
 
-    await telemetryConfig.update('enableTelemetry', false);
+    await telemetryConfig.update('enableTelemetry', false, vscode.ConfigurationTarget.Global);
     await vonageTelemetryConfig.update('enabled', false);
     assert.strictEqual(telemetry.isTelemetryEnabled(), false);
 
-    await telemetryConfig.update('enableTelemetry', false);
+    await telemetryConfig.update('enableTelemetry', false, vscode.ConfigurationTarget.Global);
     await vonageTelemetryConfig.update('enabled', true);
     assert.strictEqual(telemetry.isTelemetryEnabled(), false);
 
-    await telemetryConfig.update('enableTelemetry', true);
+    await telemetryConfig.update('enableTelemetry', true, vscode.ConfigurationTarget.Global);
     await vonageTelemetryConfig.update('enabled', false);
     assert.strictEqual(telemetry.isTelemetryEnabled(), false);
 
-    await telemetryConfig.update('enableTelemetry', true);
+    await telemetryConfig.update('enableTelemetry', true, vscode.ConfigurationTarget.Global);
     await vonageTelemetryConfig.update('enabled', true);
     assert.strictEqual(telemetry.isTelemetryEnabled(), true);
   });
