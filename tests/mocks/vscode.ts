@@ -8,7 +8,7 @@ export class TestMemento implements vscode.Memento {
   }
 
   public keys(): readonly string[] {
-    return Array.from(this.storage.keys())
+    return Array.from(this.storage.keys());
   }
 
   public get(key: string, defaultValue?: any): any {
