@@ -504,7 +504,7 @@
     "moment": "^2.29.4",
     "node-fetch": "^2.6.7",
     "os-name": "^4.0.1",
-    "public-ip": "^6.0.1",
+    "public-ip": "^4.0.4",
     "universal-analytics": "^0.5.3",
     "uuid": "^9.0.0",
     "vscode-nls": "^5.2.0"
