@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import ua from 'universal-analytics';
 import osName from 'os-name';
-import { publicIpv4 } from 'public-ip';
+import publicIp from 'public-ip';
 import { getExtensionInfo } from './utils';
 
 export interface Telemetry {
@@ -117,7 +117,7 @@ export class GoogleAnalyticsTelemetry implements Telemetry {
     /**
      * Store
      */
-    this.ip = await publicIpv4();
+    this.ip = await publicIp.v4();
 
     /**
      * User custom dimensions to store user metadata
