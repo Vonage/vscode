@@ -38,6 +38,7 @@ export class Extension {
      * available to the user. The credentials are also used
      * when making requests from the Vonage API.
      */
+    Auth.loginWithNeruIfAvailable();
     const authenticated = await Auth.isAuthenticated();
     vscode.commands.executeCommand('setContext', 'vonage:authenticated', authenticated);
     
