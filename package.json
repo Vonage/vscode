@@ -1,7 +1,7 @@
 {
   "name": "vscode",
   "displayName": "Vonage",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "A Visual Studio Code extension for accessing the Vonage communication APIs.",
   "main": "./dist/extension",
   "repository": {
@@ -14,8 +14,8 @@
     "voice"
   ],
   "author": {
-    "name": "Michael Jolley",
-    "email": "michael.jolley@vonage.com"
+    "name": "Vonage DevRel",
+    "email": "devrel@vonage.com"
   },
   "license": "MIT",
   "bugs": {
@@ -25,7 +25,7 @@
   "icon": "resources/logo.png",
   "preview": false,
   "engines": {
-    "vscode": "^1.53.0"
+    "vscode": "^1.72.0"
   },
   "galleryBanner": {
     "color": "#373436",
