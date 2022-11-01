@@ -31,7 +31,7 @@ export class Auth {
       return true;
     }
     return false;
-  }
+  };
 
   /**
    * Try to read ~/.neru-cli and extract credentials

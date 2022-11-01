@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import * as querystring from 'querystring';
-import osName = require('os-name');
+import osName from 'os-name';
 import { Telemetry } from "../telemetry";
 import { getExtensionInfo } from '../utils';
 import { HelpViewDataProvider } from '../views';
@@ -21,7 +21,7 @@ export class HelpCommands {
   refresh = async () => {
     this.telemetry.sendEvent('Help', 'help.refresh');
     this.vonageHelpViewDataProvider.refresh();
-  }
+  };
 
   /**
    * Opens Vonage developer portal.
@@ -52,7 +52,6 @@ export class HelpCommands {
   openSurvey = () => {
     this.telemetry.sendEvent('Help', 'help.openSurvey');
     const extensionInfo = getExtensionInfo();
-
     const query = querystring.stringify({
       platform: encodeURIComponent(osName()),
       vscodeVersion: encodeURIComponent(vscode.version),

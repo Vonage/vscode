@@ -12,7 +12,7 @@ suite('Views:Number', function () {
 
   const storage = new TestMemento();
   const viewProvider = new NumbersViewDataProvider(storage);
-  const fakeGetNumbers = Sinon.fake.returns([vonage.numberMock]);
+  const fakeGetNumbers = () => Promise.resolve([vonage.numberMock]);
   Sinon.replace(VonageClient.numbers, 'getNumbers', fakeGetNumbers);
   
   this.beforeEach(function () {

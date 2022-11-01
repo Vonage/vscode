@@ -7,6 +7,10 @@ export class TestMemento implements vscode.Memento {
     this.storage = new Map();
   }
 
+  public keys(): readonly string[] {
+    return Array.from(this.storage.keys());
+  }
+
   public get(key: string, defaultValue?: any): any {
     const data = this.storage.has(key) ? this.storage.get(key) : undefined;
     return data ? data : defaultValue;
