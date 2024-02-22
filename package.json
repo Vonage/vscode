@@ -497,7 +497,7 @@
     "test": "node ./out/tests/runTest.js"
   },
   "dependencies": {
-    "@vonage/server-sdk": "^2.11.2",
+    "@vonage/server-sdk": "^3.0.0",
     "handlebars": "^4.7.7",
     "ini": "^3.0.1",
     "keytar": "^7.9.0",
